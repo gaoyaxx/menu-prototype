@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
       el.innerHTML =
         '<input type="radio" name="sku-selection" class="sku-modal__item-radio" data-index="' + idx + '">' +
         '<div class="sku-modal__item-info">' +
-          '<span class="sku-modal__item-name">' + escapeHtml(item.name) + '</span>' +
+          '<span class="sku-modal__item-name">' + escapeHtml(item.skuLink) + '</span>' +
           '<span class="sku-modal__item-sku">' + escapeHtml(item.skuId) + '</span>' +
         '</div>' +
         '<span class="sku-modal__item-price">' + escapeHtml(item.price) + '</span>';
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function prefillFromItem(itemData) {
     fieldDisplayName.value = itemData.name;
     fieldInternalName.value = itemData.internalName || itemData.name;
-    fieldSkuCode.value = itemData.skuLink || '';
+    fieldSkuCode.value = itemData.skuId || '';
 
     // SKU linked → disable SKU code & Alcohol, show "Edit in SKU library"
     fieldSkuCode.disabled = true;
@@ -253,8 +253,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // SKU section
     skuEmptyState.style.display = 'none';
     skuPrefilledState.style.display = '';
-    skuPrefilledName.textContent = itemData.name + '  ·  ' + (itemData.internalName || itemData.name);
-    skuPrefilledMeta.textContent = itemData.price;
+    skuPrefilledName.textContent = itemData.skuLink || itemData.name;
+    skuPrefilledMeta.textContent = itemData.skuId;
     if (itemData.thumb) {
       skuPrefilledImg.src = itemData.thumb;
       skuPrefilledImg.alt = itemData.name;
@@ -1098,6 +1098,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function openMgcPanel(from) {
     mgcOpenedFrom = from || 'mg';
     resetMgcPanel();
+    // Always reset title (Edit flow will override after this)
+    var panelTitle = document.querySelector('.mgc-panel__title');
+    if (panelTitle) panelTitle.textContent = 'Create modifier group';
     mgcOverlay.classList.add('mgc-overlay--visible');
     if (window.lucide) lucide.createIcons();
   }
@@ -1220,6 +1223,20 @@ document.addEventListener('DOMContentLoaded', () => {
         valEl.textContent = val + 1;
       } else if (btn.dataset.action === 'dec' && val > 0) {
         valEl.textContent = val - 1;
+      }
+    });
+  }
+
+  // Default checkboxes — radio-button behavior (only one selected at a time)
+  // Delegated on the whole items-table so it covers both added rows and the template row
+  var mgcItemsTable = mgcDefaultCell ? mgcDefaultCell.closest('.mgc-items-table') : null;
+  if (mgcItemsTable) {
+    mgcItemsTable.addEventListener('change', function(e) {
+      if (!e.target.classList.contains('mgc-default-cb')) return;
+      if (e.target.checked) {
+        mgcItemsTable.querySelectorAll('.mgc-default-cb').forEach(function(other) {
+          if (other !== e.target) other.checked = false;
+        });
       }
     });
   }
@@ -1399,7 +1416,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Name column content
       var nameHtml;
-      if (item.type === 'new') {
+      if (item.type === 'new' || item.type === 'sku') {
+        // Editable name for new items and SKU-linked items
         nameHtml = '<input type="text" class="mgc-input mgc-input--sm" value="' + escapeHtml(item.name) + '">';
       } else if (item.type === 'menu') {
         nameHtml = '<span class="mgc-row-name-text">' + escapeHtml(item.name) + '</span>' +
@@ -1408,12 +1426,15 @@ document.addEventListener('DOMContentLoaded', () => {
         nameHtml = '<span class="mgc-row-name-text">' + escapeHtml(item.name) + '</span>';
       }
 
-      // Price column
+      // Price column — editable for all types
       var priceHtml = '<input type="text" class="mgc-input mgc-input--sm" value="' + escapeHtml(item.price) + '">';
 
-      // SKU column — blue link + SKUID for existing, input for new
+      // SKU column — locked display for sku type, blue link for existing, input for new
       var skuHtml;
-      if (item.type === 'new') {
+      if (item.type === 'sku' && item.sku) {
+        // SKU-linked: show locked SKU name + code (not editable)
+        skuHtml = '<div class="mgc-row-sku"><span class="mgc-row-sku__link">' + escapeHtml(item.sku) + '</span><span class="mgc-row-sku__id">' + escapeHtml(item.skuId) + '</span></div>';
+      } else if (item.type === 'new') {
         skuHtml = '<input type="text" class="mgc-input mgc-input--sm" placeholder="SKU code">';
       } else if (item.sku) {
         skuHtml = '<div class="mgc-row-sku"><span class="mgc-row-sku__link">' + escapeHtml(item.sku) + '</span><span class="mgc-row-sku__id">' + generateSkuId(item.name) + '</span></div>';
@@ -1512,6 +1533,8 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+    // Default checkboxes — radio behavior handled by delegated listener on table
+
     if (window.lucide) lucide.createIcons();
   }
 
@@ -1523,6 +1546,164 @@ document.addEventListener('DOMContentLoaded', () => {
     if (mgcItemsBody) mgcItemsBody.innerHTML = '';
     if (mgcSearchInput) mgcSearchInput.value = '';
   };
+
+  // ── MGC: Add modifier items from SKU library sub-panel ──
+  var mgcSkuOverlay   = document.getElementById('mgc-sku-overlay');
+  var mgcSkuBack      = document.getElementById('mgc-sku-back');
+  var mgcSkuClose     = document.getElementById('mgc-sku-close');
+  var mgcSkuSearch    = document.getElementById('mgc-sku-search');
+  var mgcSkuSelectAll = document.getElementById('mgc-sku-select-all');
+  var mgcSkuCount     = document.getElementById('mgc-sku-count');
+  var mgcSkuList      = document.getElementById('mgc-sku-list');
+  var mgcSkuAddBtn    = document.getElementById('mgc-sku-add');
+  var mgcSkuCancelBtn = document.getElementById('mgc-sku-cancel');
+  var mgcSkuItems     = [];       // full list from table
+  var mgcSkuSelected  = new Set(); // indices of selected items
+
+  // Open the SKU selection panel (hides the mgc panel behind it)
+  function openMgcSkuPanel() {
+    mgcSkuItems = scrapeTableItems();
+    mgcSkuSelected.clear();
+    mgcSkuSearch.value = '';
+    mgcSkuSelectAll.checked = false;
+    mgcSkuAddBtn.disabled = true;
+    buildMgcSkuList(mgcSkuItems);
+    // Hide the Create modifier group panel
+    mgcOverlay.classList.remove('mgc-overlay--visible');
+    // Show the SKU selection panel
+    mgcSkuOverlay.classList.add('mgc-sku-overlay--visible');
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // Close the SKU selection panel (returns to the mgc panel)
+  function closeMgcSkuPanel() {
+    mgcSkuOverlay.classList.remove('mgc-sku-overlay--visible');
+    // Restore the Create modifier group panel
+    mgcOverlay.classList.add('mgc-overlay--visible');
+  }
+
+  // Build the list of SKU items with checkboxes
+  function buildMgcSkuList(items) {
+    mgcSkuList.innerHTML = '';
+    mgcSkuCount.textContent = items.length;
+    items.forEach(function(item, idx) {
+      var el = document.createElement('div');
+      el.className = 'mgc-sku-item';
+      el.dataset.index = idx;
+      var checked = mgcSkuSelected.has(idx) ? ' checked' : '';
+      el.innerHTML =
+        '<input type="checkbox" class="mgc-sku-item__checkbox" data-index="' + idx + '"' + checked + '>' +
+        '<div class="mgc-sku-item__info">' +
+          '<span class="mgc-sku-item__name">' + escapeHtml(item.skuLink || item.name) + '</span>' +
+          '<span class="mgc-sku-item__code">' + escapeHtml(item.skuId) + '</span>' +
+        '</div>' +
+        '<span class="mgc-sku-item__price">' + escapeHtml(item.price) + '</span>';
+      mgcSkuList.appendChild(el);
+    });
+  }
+
+  // Update the Add button state and select-all
+  function updateMgcSkuState() {
+    mgcSkuAddBtn.disabled = mgcSkuSelected.size === 0;
+    // Update select-all checkbox
+    var visibleCheckboxes = mgcSkuList.querySelectorAll('.mgc-sku-item:not([style*="display: none"]) .mgc-sku-item__checkbox');
+    var allChecked = visibleCheckboxes.length > 0;
+    visibleCheckboxes.forEach(function(cb) {
+      if (!cb.checked) allChecked = false;
+    });
+    mgcSkuSelectAll.checked = allChecked;
+  }
+
+  // Handle clicking an SKU list item (toggle checkbox)
+  if (mgcSkuList) {
+    mgcSkuList.addEventListener('click', function(e) {
+      var item = e.target.closest('.mgc-sku-item');
+      if (!item) return;
+      var idx = parseInt(item.dataset.index, 10);
+      var cb = item.querySelector('.mgc-sku-item__checkbox');
+      if (e.target !== cb) cb.checked = !cb.checked;
+      if (cb.checked) {
+        mgcSkuSelected.add(idx);
+        item.classList.add('mgc-sku-item--selected');
+      } else {
+        mgcSkuSelected.delete(idx);
+        item.classList.remove('mgc-sku-item--selected');
+      }
+      updateMgcSkuState();
+    });
+  }
+
+  // Select / deselect all
+  if (mgcSkuSelectAll) {
+    mgcSkuSelectAll.addEventListener('change', function() {
+      var checked = mgcSkuSelectAll.checked;
+      mgcSkuList.querySelectorAll('.mgc-sku-item:not([style*="display: none"])').forEach(function(item) {
+        var idx = parseInt(item.dataset.index, 10);
+        var cb = item.querySelector('.mgc-sku-item__checkbox');
+        cb.checked = checked;
+        if (checked) {
+          mgcSkuSelected.add(idx);
+          item.classList.add('mgc-sku-item--selected');
+        } else {
+          mgcSkuSelected.delete(idx);
+          item.classList.remove('mgc-sku-item--selected');
+        }
+      });
+      updateMgcSkuState();
+    });
+  }
+
+  // Search filter
+  if (mgcSkuSearch) {
+    mgcSkuSearch.addEventListener('input', function() {
+      var q = mgcSkuSearch.value.toLowerCase();
+      mgcSkuList.querySelectorAll('.mgc-sku-item').forEach(function(item) {
+        var name = item.querySelector('.mgc-sku-item__name').textContent.toLowerCase();
+        var code = item.querySelector('.mgc-sku-item__code').textContent.toLowerCase();
+        item.style.display = (name.includes(q) || code.includes(q)) ? '' : 'none';
+      });
+    });
+  }
+
+  // "Add from SKU library" button in the mgc panel
+  var mgcAddSkuBtn = document.querySelector('.mgc-add-sku-btn');
+  if (mgcAddSkuBtn) {
+    mgcAddSkuBtn.addEventListener('click', function() {
+      openMgcSkuPanel();
+    });
+  }
+
+  // Add selected SKU items as modifier items
+  if (mgcSkuAddBtn) {
+    mgcSkuAddBtn.addEventListener('click', function() {
+      mgcSkuSelected.forEach(function(idx) {
+        var item = mgcSkuItems[idx];
+        // Check not already added (by name)
+        var exists = mgcAddedItems.some(function(a) { return a.name === (item.skuLink || item.name); });
+        if (!exists) {
+          mgcAddedItems.push({
+            name: item.skuLink || item.name,
+            price: item.price,
+            sku: item.skuLink || '',
+            skuId: item.skuId || '',
+            type: 'sku',
+            locked: false,
+            modifiers: []
+          });
+        }
+      });
+      renderMgcItems();
+      closeMgcSkuPanel();
+    });
+  }
+
+  // Back / Cancel / Close buttons
+  if (mgcSkuBack) mgcSkuBack.addEventListener('click', closeMgcSkuPanel);
+  if (mgcSkuCancelBtn) mgcSkuCancelBtn.addEventListener('click', closeMgcSkuPanel);
+  if (mgcSkuClose) mgcSkuClose.addEventListener('click', function() {
+    closeMgcSkuPanel();
+    closeMgcPanel();
+  });
 
   // Apply modifier group selection to the takeover form + preview
   function applyModifierGroupSelection() {
@@ -1678,7 +1859,17 @@ document.addEventListener('DOMContentLoaded', () => {
           '<span class="mg-card__rule">' + escapeHtml(mgData.ruleShort) + '</span>' +
           '<div class="mg-card__chevron"><i data-lucide="chevron-down" class="lucide-icon" style="width:20px;height:20px"></i></div>' +
         '</div>' +
-        '<button class="mg-card__more"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px"></i></button>';
+        '<button class="mg-card__more"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px"></i></button>' +
+        '<div class="mg-card__dropdown" data-mg-name="' + escapeHtml(mgName) + '">' +
+          '<button class="mg-card__dropdown-item mg-card__dropdown-edit" data-mg-name="' + escapeHtml(mgName) + '">' +
+            '<i data-lucide="pencil" class="lucide-icon" style="width:16px;height:16px"></i>' +
+            '<span>Edit modifier group</span>' +
+          '</button>' +
+          '<button class="mg-card__dropdown-item mg-card__dropdown-item--danger mg-card__dropdown-delete" data-mg-name="' + escapeHtml(mgName) + '">' +
+            '<i data-lucide="trash-2" class="lucide-icon" style="width:16px;height:16px"></i>' +
+            '<span>Remove modifier group</span>' +
+          '</button>' +
+        '</div>';
       card.appendChild(header);
 
       // Body (expanded list of modifier items)
@@ -1697,14 +1888,180 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Toggle expand/collapse on header click
       header.addEventListener('click', function(e) {
-        // Don't toggle if clicking the more button
-        if (e.target.closest('.mg-card__more')) return;
+        // Don't toggle if clicking the more button or dropdown
+        if (e.target.closest('.mg-card__more') || e.target.closest('.mg-card__dropdown')) return;
         card.classList.toggle('mg-card--expanded');
+      });
+
+      // Three-dots more button → toggle dropdown
+      var moreBtn = header.querySelector('.mg-card__more');
+      var dropdown = header.querySelector('.mg-card__dropdown');
+      moreBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        // Close any other open dropdowns
+        closeAllMgCardDropdowns();
+        // Position dropdown using fixed coords
+        var rect = moreBtn.getBoundingClientRect();
+        dropdown.style.top = (rect.bottom + 4) + 'px';
+        dropdown.style.right = (window.innerWidth - rect.right) + 'px';
+        dropdown.classList.add('mg-card__dropdown--open');
+      });
+
+      // Edit button
+      dropdown.querySelector('.mg-card__dropdown-edit').addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeAllMgCardDropdowns();
+        openEditMgPanel(mgName);
+      });
+
+      // Delete button
+      dropdown.querySelector('.mg-card__dropdown-delete').addEventListener('click', function(e) {
+        e.stopPropagation();
+        closeAllMgCardDropdowns();
+        openDeleteMgModal(mgName);
       });
 
       modifiersFilled.appendChild(card);
     });
   }
+
+  // Close all open mg-card dropdown menus
+  function closeAllMgCardDropdowns() {
+    document.querySelectorAll('.mg-card__dropdown--open').forEach(function(d) {
+      d.classList.remove('mg-card__dropdown--open');
+    });
+  }
+
+  // Close dropdowns on outside click
+  document.addEventListener('click', function() {
+    closeAllMgCardDropdowns();
+  });
+
+  // ── Delete modifier group confirmation modal ──
+  var mgDeleteOverlay  = document.getElementById('mg-delete-overlay');
+  var mgDeleteNameEl   = document.getElementById('mg-delete-name');
+  var mgDeleteCancel   = document.getElementById('mg-delete-cancel');
+  var mgDeleteConfirm  = document.getElementById('mg-delete-confirm');
+  var mgDeleteTarget   = '';  // name of the group to delete
+
+  function openDeleteMgModal(mgName) {
+    mgDeleteTarget = mgName;
+    mgDeleteNameEl.textContent = mgName;
+    mgDeleteOverlay.classList.add('mg-delete-overlay--visible');
+  }
+
+  function closeDeleteMgModal() {
+    mgDeleteOverlay.classList.remove('mg-delete-overlay--visible');
+    mgDeleteTarget = '';
+  }
+
+  if (mgDeleteCancel) {
+    mgDeleteCancel.addEventListener('click', closeDeleteMgModal);
+  }
+
+  if (mgDeleteConfirm) {
+    mgDeleteConfirm.addEventListener('click', function() {
+      if (mgDeleteTarget) {
+        // Remove from selectedModifierGroups
+        var idx = selectedModifierGroups.indexOf(mgDeleteTarget);
+        if (idx > -1) selectedModifierGroups.splice(idx, 1);
+        applyModifierGroupSelection();
+      }
+      closeDeleteMgModal();
+    });
+  }
+
+  // Close delete modal on overlay click
+  if (mgDeleteOverlay) {
+    mgDeleteOverlay.addEventListener('click', function(e) {
+      if (e.target === mgDeleteOverlay) closeDeleteMgModal();
+    });
+  }
+
+  // ── Edit modifier group (reuse mgc-panel) ──
+  var mgcPanelTitle = document.querySelector('.mgc-panel__title');
+  var mgcEditingName = '';  // track which group is being edited
+
+  function openEditMgPanel(mgName) {
+    var mgData = MODIFIER_GROUPS.find(function(g) { return g.name === mgName; });
+    if (!mgData) return;
+
+    mgcEditingName = mgName;
+
+    // Open the panel (resets all fields first)
+    openMgcPanel('edit');
+
+    // Change title to "Edit modifier group"
+    if (mgcPanelTitle) mgcPanelTitle.textContent = 'Edit modifier group';
+
+    // Pre-fill Display name
+    var dispName = document.getElementById('mgc-display-name');
+    if (dispName) dispName.value = mgData.name;
+
+    // Pre-fill Internal name (use name as fallback)
+    var intName = document.getElementById('mgc-internal-name');
+    if (intName) intName.value = mgData.name;
+
+    // Select the correct type card
+    if (mgData.type) {
+      mgcTypeGrid.querySelectorAll('.mgc-type-card').forEach(function(c) {
+        var cardName = c.querySelector('.mgc-type-card__name');
+        if (cardName && cardName.textContent.trim() === mgData.type) {
+          c.classList.add('mgc-type-card--selected');
+        }
+      });
+    }
+
+    // Parse rule to set dropdowns (e.g. "Required · Total 1 · Each 1")
+    if (mgData.rule) {
+      var ruleStr = mgData.rule;
+      // Parse total min/max from rule
+      var totalMatch = ruleStr.match(/Total\s+(\d+)(?:\s*[-–]\s*(\d+))?/i);
+      if (totalMatch) {
+        var totalVal = totalMatch[1];
+        if (ruleStr.indexOf('Required') > -1) {
+          mgcTotalMin.value = totalVal;
+        } else {
+          mgcTotalMin.value = '0';
+        }
+        mgcTotalMax.value = totalMatch[2] || totalVal;
+      }
+      // Parse each/maxPer
+      var eachMatch = ruleStr.match(/Each\s+(\d+)/i);
+      if (eachMatch) {
+        mgcMaxPer.value = eachMatch[1];
+      }
+      // Trigger rule updates
+      updateMgcRules();
+      updateMgcDefaultCell();
+    }
+
+    // Populate modifier items
+    mgcAddedItems = [];
+    mgData.items.forEach(function(item) {
+      mgcAddedItems.push({
+        name: item.name,
+        price: item.price,
+        sku: '',
+        skuId: '',
+        type: 'manual',
+        locked: false,
+        modifiers: []
+      });
+    });
+    renderMgcItems();
+
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // Override the close/cancel to restore title
+  var _origCloseMgcPanel = closeMgcPanel;
+  closeMgcPanel = function() {
+    _origCloseMgcPanel();
+    // Restore title
+    if (mgcPanelTitle) mgcPanelTitle.textContent = 'Create modifier group';
+    mgcEditingName = '';
+  };
 
   // Add modifier group button (empty state)
   if (modifiersAddBtn) {

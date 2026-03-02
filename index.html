@@ -8,10 +8,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Inter+Tight:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/reset.css?v=100">
   <link rel="stylesheet" href="css/layout.css?v=5">
   <link rel="stylesheet" href="css/components.css?v=6">
-  <link rel="stylesheet" href="css/add-item.css">
+  <link rel="stylesheet" href="css/add-item.css?v=3">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
@@ -1535,6 +1535,71 @@
     </div>
   </div>
 
+  <!-- ===== MGC: Add modifier items from SKU library sub-panel ===== -->
+  <div class="mgc-sku-overlay" id="mgc-sku-overlay">
+    <div class="mgc-sku-panel" id="mgc-sku-panel">
+      <!-- Header -->
+      <div class="mgc-sku-panel__header">
+        <div class="mgc-sku-panel__header-left">
+          <button class="mgc-sku-panel__back" id="mgc-sku-back" aria-label="Back">
+            <i data-lucide="arrow-left" class="lucide-icon" style="width:20px;height:20px"></i>
+          </button>
+          <h2 class="mgc-sku-panel__title">Add modifier items from SKU library</h2>
+        </div>
+        <div class="mgc-sku-panel__header-actions">
+          <button class="mgc-panel__header-btn" id="mgc-sku-close" aria-label="Close">
+            <i data-lucide="x" class="lucide-icon" style="width:20px;height:20px"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="mgc-sku-panel__body">
+        <!-- Search -->
+        <div class="mgc-sku-panel__search">
+          <i data-lucide="search" class="lucide-icon mgc-sku-panel__search-icon" style="width:16px;height:16px"></i>
+          <input type="text" class="mgc-sku-panel__search-input" id="mgc-sku-search" placeholder="Search item SKU" autocomplete="off">
+        </div>
+
+        <!-- Select all row -->
+        <div class="mgc-sku-panel__select-all">
+          <label class="mgc-sku-panel__select-all-label">
+            <input type="checkbox" id="mgc-sku-select-all">
+            <span class="mgc-sku-panel__select-all-text">Select / deselect all</span>
+          </label>
+          <span class="mgc-sku-panel__count" id="mgc-sku-count">0</span>
+        </div>
+
+        <!-- SKU list -->
+        <div class="mgc-sku-panel__list" id="mgc-sku-list">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="mgc-sku-panel__footer">
+        <button class="btn btn--secondary" id="mgc-sku-cancel">Cancel</button>
+        <button class="btn btn--primary" id="mgc-sku-add" disabled>Add</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DELETE MODIFIER GROUP CONFIRMATION MODAL ===== -->
+  <div class="mg-delete-overlay" id="mg-delete-overlay">
+    <div class="mg-delete-modal">
+      <div class="mg-delete-modal__header">
+        <h2 class="mg-delete-modal__title">Remove modifier group</h2>
+      </div>
+      <div class="mg-delete-modal__body">
+        You are removing modifier group <strong id="mg-delete-name"></strong>, please confirm.
+      </div>
+      <div class="mg-delete-modal__footer">
+        <button class="btn btn--secondary" id="mg-delete-cancel">Cancel</button>
+        <button class="btn btn--danger" id="mg-delete-confirm">Delete</button>
+      </div>
+    </div>
+  </div>
+
   <!-- ===== PAGE TAKEOVER: Add Item ===== -->
   <div class="takeover" id="takeover">
     <!-- Takeover Nav -->
@@ -1955,7 +2020,7 @@
   <script src="js/sort.js"></script>
   <script src="js/sticky-header.js"></script>
   <script src="js/tooltips.js"></script>
-  <script src="js/add-item.js"></script>
+  <script src="js/add-item.js?v=8"></script>
   <script src="js/multiselect.js"></script>
   <script>
     // Initialize Lucide icons

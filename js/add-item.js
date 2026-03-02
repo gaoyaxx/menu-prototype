@@ -1188,26 +1188,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Update Default column: checkbox when maxPer=1, quantity selector when maxPer>1
+  // Update Default column: only update already-added rows (template row has no default control)
   function updateMgcDefaultCell() {
     if (!mgcDefaultCell) return;
-    var maxPerVal = mgcMaxPer.value;
-    var maxPerNum = maxPerVal === 'Unlimited' ? Infinity : parseInt(maxPerVal, 10);
+    // Keep the "Search to add" row default cell empty
+    mgcDefaultCell.innerHTML = '';
 
-    if (maxPerNum > 1) {
-      // Quantity selector
-      mgcDefaultCell.innerHTML =
-        '<div class="mgc-default-qty">' +
-          '<button class="mgc-default-qty__btn" data-action="dec">\u2212</button>' +
-          '<span class="mgc-default-qty__val">0</span>' +
-          '<button class="mgc-default-qty__btn" data-action="inc">+</button>' +
-        '</div>';
-    } else {
-      // Checkbox
-      mgcDefaultCell.innerHTML = '<input type="checkbox" class="mgc-default-cb">';
-    }
-
-    // Also update all already-added rows
+    // Update all already-added rows
     renderMgcItems();
   }
 

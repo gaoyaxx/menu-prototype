@@ -3246,6 +3246,25 @@
   -webkit-appearance: none;
   display: block;
   margin: 0 auto;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.mgc-default-cb:checked {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.mgc-default-cb:checked::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 4px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
 }
 
 .mgc-default-qty {

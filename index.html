@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/reset.css?v=100">
   <link rel="stylesheet" href="css/layout.css?v=5">
   <link rel="stylesheet" href="css/components.css?v=6">
-  <link rel="stylesheet" href="css/add-item.css?v=4">
+  <link rel="stylesheet" href="css/add-item.css?v=8">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
@@ -1466,7 +1466,7 @@
           </div>
 
           <!-- 5. Add modifier items -->
-          <div class="mgc-field">
+          <div class="mgc-field" id="mgc-items-section">
             <div class="mgc-field__header-row">
               <div>
                 <div class="mgc-field__label">Add modifier items <i data-lucide="help-circle" class="lucide-icon mgc-field__hint-icon" style="width:16px;height:16px"></i></div>
@@ -1529,8 +1529,23 @@
 
       <!-- Footer -->
       <div class="mgc-panel__footer">
-        <button class="btn btn--secondary mgc-panel__cancel" id="mgc-cancel">Cancel</button>
-        <button class="btn btn--primary" id="mgc-confirm">Confirm</button>
+        <!-- Shared modifier group banner (shown in Edit mode when group is used by other items) -->
+        <div class="mgc-shared-banner" id="mgc-shared-banner" style="display:none;">
+          <div class="mgc-shared-banner__icon">
+            <i data-lucide="info" class="lucide-icon" style="width:16px;height:16px"></i>
+          </div>
+          <div class="mgc-shared-banner__content">
+            <div class="mgc-shared-banner__title">Shared modifier group</div>
+            <div class="mgc-shared-banner__message">Changes will apply to all menu items using this group. If you want to edit for this item only, duplicate it.</div>
+          </div>
+          <button class="mgc-shared-banner__close" id="mgc-shared-banner-close" aria-label="Dismiss">
+            <i data-lucide="x" class="lucide-icon" style="width:14px;height:14px"></i>
+          </button>
+        </div>
+        <div class="mgc-panel__footer-buttons">
+          <button class="btn btn--secondary mgc-panel__cancel" id="mgc-cancel">Cancel</button>
+          <button class="btn btn--primary" id="mgc-confirm">Confirm</button>
+        </div>
       </div>
     </div>
   </div>
@@ -2020,7 +2035,7 @@
   <script src="js/sort.js"></script>
   <script src="js/sticky-header.js"></script>
   <script src="js/tooltips.js"></script>
-  <script src="js/add-item.js?v=9"></script>
+  <script src="js/add-item.js?v=14"></script>
   <script src="js/multiselect.js"></script>
   <script>
     // Initialize Lucide icons

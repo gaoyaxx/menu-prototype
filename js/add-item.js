@@ -1257,8 +1257,174 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.target === mgcOverlay) closeMgcPanel();
   });
 
-  // Confirm — just close for prototype (the panel is for creating, not functional data)
+  // ── Validation helpers ──
+  function clearMgcErrors() {
+    mgcOverlay.querySelectorAll('.mgc-input--error').forEach(function(el) {
+      el.classList.remove('mgc-input--error');
+    });
+    mgcOverlay.querySelectorAll('.mgc-type-grid--error').forEach(function(el) {
+      el.classList.remove('mgc-type-grid--error');
+    });
+    mgcOverlay.querySelectorAll('.mgc-items-table--error').forEach(function(el) {
+      el.classList.remove('mgc-items-table--error');
+    });
+    mgcOverlay.querySelectorAll('.mgc-field__error').forEach(function(el) {
+      el.remove();
+    });
+  }
+
+  function showMgcError(field, message) {
+    field.classList.add('mgc-input--error');
+    var errEl = document.createElement('div');
+    errEl.className = 'mgc-field__error';
+    errEl.textContent = message;
+    field.parentNode.appendChild(errEl);
+  }
+
+  function showMgcTypeError(message) {
+    mgcTypeGrid.classList.add('mgc-type-grid--error');
+    var errEl = document.createElement('div');
+    errEl.className = 'mgc-field__error';
+    errEl.textContent = message;
+    mgcTypeGrid.parentNode.appendChild(errEl);
+  }
+
+  function showMgcItemsError(message) {
+    var table = mgcOverlay.querySelector('.mgc-items-table');
+    if (table) {
+      table.classList.add('mgc-items-table--error');
+      var errEl = document.createElement('div');
+      errEl.className = 'mgc-field__error';
+      errEl.textContent = message;
+      table.parentNode.appendChild(errEl);
+    }
+  }
+
+  // Build rule strings from dropdown values
+  function buildMgcRuleStrings(minVal, maxVal, maxPerVal) {
+    var min = minVal === 'Unlimited' ? 0 : parseInt(minVal, 10) || 0;
+    var max = maxVal === 'Unlimited' ? 'any' : maxVal;
+    var maxPer = maxPerVal === 'Unlimited' ? 'Unlimited' : maxPerVal;
+
+    var rule = '';
+    var ruleShort = '';
+
+    // Required prefix
+    if (min >= 1) rule += 'Required · ';
+
+    // Total
+    if (min === parseInt(max, 10)) {
+      rule += 'Total ' + min;
+      ruleShort = 'Total ' + min;
+    } else {
+      rule += 'Total ' + min + '-' + max;
+      ruleShort = 'Total ' + min + '-' + max;
+    }
+
+    // Each / MaxPer
+    rule += ' · Each ' + maxPer;
+    ruleShort += ' · Each ≤ ' + maxPer;
+
+    return { rule: rule, ruleShort: ruleShort };
+  }
+
+  // Clear errors on input
+  var mgcDisplayNameInput = document.getElementById('mgc-display-name');
+  if (mgcDisplayNameInput) {
+    mgcDisplayNameInput.addEventListener('input', function() {
+      mgcDisplayNameInput.classList.remove('mgc-input--error');
+      var err = mgcDisplayNameInput.parentNode.querySelector('.mgc-field__error');
+      if (err) err.remove();
+    });
+  }
+
+  // Clear type error on type card click
+  mgcTypeGrid.addEventListener('click', function() {
+    mgcTypeGrid.classList.remove('mgc-type-grid--error');
+    var err = mgcTypeGrid.parentNode.querySelector('.mgc-field__error');
+    if (err) err.remove();
+  });
+
+  // Confirm — validate, persist, and close
   mgcConfirmBtn.addEventListener('click', function() {
+    clearMgcErrors();
+
+    var dispName = document.getElementById('mgc-display-name');
+    var hasError = false;
+
+    // Validate Display name
+    if (!dispName.value.trim()) {
+      showMgcError(dispName, 'Display name is required');
+      hasError = true;
+    }
+
+    // Validate Type selection
+    var selectedType = mgcTypeGrid.querySelector('.mgc-type-card--selected');
+    if (!selectedType) {
+      showMgcTypeError('Please select a modifier group type');
+      hasError = true;
+    }
+
+    // Validate at least one modifier item
+    var mgcItemsSection = document.getElementById('mgc-items-section');
+    if (mgcAddedItems.length === 0) {
+      showMgcItemsError('At least one modifier item is required');
+      hasError = true;
+    }
+
+    if (hasError) {
+      // Scroll panel to first error
+      var panelBody = document.querySelector('.mgc-panel__body');
+      if (panelBody) {
+        var firstErr = panelBody.querySelector('.mgc-input--error, .mgc-type-grid--error, .mgc-items-table--error');
+        if (firstErr) {
+          firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } else {
+          panelBody.scrollTop = 0;
+        }
+      }
+      return;
+    }
+
+    // Collect form data
+    var name = dispName.value.trim();
+    var typeName = selectedType.querySelector('.mgc-type-card__name').textContent.trim();
+    var minVal = mgcTotalMin.value;
+    var maxVal = mgcTotalMax.value;
+    var maxPerVal = mgcMaxPer.value;
+    var rules = buildMgcRuleStrings(minVal, maxVal, maxPerVal);
+    var items = mgcAddedItems.map(function(a) {
+      return { name: a.name, price: a.price };
+    });
+
+    var mgObj = {
+      name: name,
+      type: typeName,
+      rule: rules.rule,
+      ruleShort: rules.ruleShort,
+      items: items
+    };
+
+    if (mgcEditingName) {
+      // Edit mode: update existing group in MODIFIER_GROUPS
+      var existingIdx = MODIFIER_GROUPS.findIndex(function(g) { return g.name === mgcEditingName; });
+      if (existingIdx > -1) {
+        MODIFIER_GROUPS[existingIdx] = mgObj;
+      }
+      // Update name in selectedModifierGroups if it changed
+      var selIdx = selectedModifierGroups.indexOf(mgcEditingName);
+      if (selIdx > -1) {
+        selectedModifierGroups[selIdx] = name;
+      }
+    } else {
+      // Create mode: add new group
+      MODIFIER_GROUPS.push(mgObj);
+      if (selectedModifierGroups.indexOf(name) === -1) {
+        selectedModifierGroups.push(name);
+      }
+    }
+
+    applyModifierGroupSelection();
     closeMgcPanel();
   });
 
@@ -1382,6 +1548,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function addMgcItem(item) {
     mgcAddedItems.push({ name: item.name, price: item.price, sku: item.sku || '', type: item.type, locked: item.type !== 'new', modifiers: item.modifiers || [] });
     renderMgcItems();
+    // Clear items-required error when an item is added
+    var table = mgcOverlay.querySelector('.mgc-items-table');
+    if (table) {
+      table.classList.remove('mgc-items-table--error');
+      var errEl = table.parentNode.querySelector('.mgc-field__error');
+      if (errEl) errEl.remove();
+    }
   }
 
   function removeMgcItem(index) {
@@ -1968,6 +2141,29 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── Edit modifier group (reuse mgc-panel) ──
   var mgcPanelTitle = document.querySelector('.mgc-panel__title');
   var mgcEditingName = '';  // track which group is being edited
+  var mgcSharedBanner = document.getElementById('mgc-shared-banner');
+  var mgcSharedBannerClose = document.getElementById('mgc-shared-banner-close');
+
+  // Check if a modifier group is used by other menu items (i.e. it's "shared")
+  function isMgShared(mgName) {
+    var tooltipData = window._tooltipItemData || {};
+    var count = 0;
+    Object.keys(tooltipData).forEach(function(itemName) {
+      var data = tooltipData[itemName];
+      if (data.modifiers && data.modifiers.indexOf(mgName) > -1) {
+        count++;
+      }
+    });
+    // Shared if used by at least 1 other menu item (from master data)
+    return count > 0;
+  }
+
+  // Dismiss banner
+  if (mgcSharedBannerClose) {
+    mgcSharedBannerClose.addEventListener('click', function() {
+      if (mgcSharedBanner) mgcSharedBanner.style.display = 'none';
+    });
+  }
 
   function openEditMgPanel(mgName) {
     var mgData = MODIFIER_GROUPS.find(function(g) { return g.name === mgName; });
@@ -2038,6 +2234,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     renderMgcItems();
 
+    // Show shared banner + change button text if this group is used by other items
+    if (isMgShared(mgName)) {
+      if (mgcSharedBanner) mgcSharedBanner.style.display = '';
+      mgcConfirmBtn.textContent = 'Save & apply to all';
+    } else {
+      if (mgcSharedBanner) mgcSharedBanner.style.display = 'none';
+      mgcConfirmBtn.textContent = 'Confirm';
+    }
+
     if (window.lucide) lucide.createIcons();
   }
 
@@ -2048,6 +2253,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Restore title
     if (mgcPanelTitle) mgcPanelTitle.textContent = 'Create modifier group';
     mgcEditingName = '';
+    // Reset shared banner and button text
+    if (mgcSharedBanner) mgcSharedBanner.style.display = 'none';
+    mgcConfirmBtn.textContent = 'Confirm';
   };
 
   // Add modifier group button (empty state)

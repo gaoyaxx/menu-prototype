@@ -50,7 +50,9 @@ img, svg {
 .lucide-x > *,
 .lucide-arrow-left > *,
 .lucide-external-link > *,
-.lucide-link > * {
+.lucide-link > *,
+.lucide-dollar-sign > *,
+.lucide-percent > * {
   fill: none !important;
 }
 

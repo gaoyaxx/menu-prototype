@@ -312,10 +312,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.lucide) lucide.createIcons();
   }
 
+  // ── Nav title element ──
+  const takeoverNavTitle = document.getElementById('takeover-nav-title');
+
   // ── Close Takeover ──
   function closeTakeover() {
     takeover.classList.remove('takeover--visible');
     appShell.style.display = '';
+    // Reset title back to default
+    if (takeoverNavTitle) takeoverNavTitle.textContent = 'Add menu item';
   }
 
   takeoverClose.addEventListener('click', closeTakeover);
@@ -380,6 +385,64 @@ document.addEventListener('DOMContentLoaded', () => {
       openSkuModal('add');
     });
   }
+
+  // ── Row click → Edit menu item ──
+  document.querySelector('.data-table tbody').addEventListener('click', (e) => {
+    // Ignore clicks on checkboxes, action buttons, and SKU links
+    if (e.target.closest('.table-checkbox') ||
+        e.target.closest('.row-action') ||
+        e.target.closest('.cell-sku-link')) return;
+
+    const row = e.target.closest('tr');
+    if (!row) return;
+
+    const cells = row.querySelectorAll('td');
+    if (cells.length < 7) return;
+
+    // Scrape item data from the row
+    const nameEl = row.querySelector('.cell-name-text');
+    const thumbEl = row.querySelector('.cell-thumbnail img');
+    const skuLinkEl = row.querySelector('.cell-sku-link');
+    const skuIdEl = row.querySelector('.cell-sku-id');
+
+    const item = {
+      name: nameEl ? nameEl.textContent.trim() : '',
+      thumb: thumbEl ? thumbEl.src : '',
+      skuLink: skuLinkEl ? skuLinkEl.textContent.trim() : '',
+      skuId: skuIdEl ? skuIdEl.textContent.trim() : '',
+      price: cells[4] ? cells[4].textContent.trim() : '',
+      internalName: cells[2] ? cells[2].textContent.trim() : '',
+      description: '',
+      // Extra fields for edit mode
+      usedIn: cells[5] ? cells[5].textContent.trim() : '',
+      contains: cells[6] ? cells[6].textContent.trim() : ''
+    };
+
+    // Set title to Edit mode and open takeover
+    if (takeoverNavTitle) takeoverNavTitle.textContent = 'Edit menu item';
+    openTakeover(item);
+
+    // Pre-fill categories from row data using actual category names
+    const usedInMatch = item.usedIn.match(/(\d+)/);
+    const catCount = usedInMatch ? parseInt(usedInMatch[1]) : 0;
+    if (catCount > 0) {
+      selectedCategories = CATEGORIES.slice(0, catCount).map(function(c) { return c.name; });
+      applyCategorySelection();
+    }
+
+    // Pre-fill modifier groups from row data using proper card rendering
+    const containsMatch = item.contains.match(/(\d+)/);
+    const mgCount = containsMatch ? parseInt(containsMatch[1]) : 0;
+    if (mgCount > 0) {
+      // Assign modifier groups from MODIFIER_GROUPS based on count
+      selectedModifierGroups = MODIFIER_GROUPS.slice(0, mgCount).map(function(g) { return g.name; });
+      modifiersEmpty.style.display = 'none';
+      modifiersPrefilled.style.display = '';
+      if (document.getElementById('modifiers-add-action')) document.getElementById('modifiers-add-action').style.display = '';
+      renderModifierGroupCards();
+      renderPreviewModifiers();
+    }
+  });
 
   // ── Link SKU button (empty state) ──
   const skuLinkBtn = document.getElementById('sku-link-btn');
@@ -613,15 +676,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Apply category selection to the takeover form
+  var categoriesFilledHeader = document.getElementById('categories-filled-header');
+
   function applyCategorySelection() {
     if (selectedCategories.length > 0) {
       categoriesEmpty.style.display = 'none';
       categoriesFilled.style.display = '';
+      var count = selectedCategories.length;
+      categoriesFilledHeader.textContent = count + (count === 1 ? ' category' : ' categories');
       categoriesFilledList.textContent = selectedCategories.join(', ');
       categoriesEditAction.style.display = '';
     } else {
       categoriesEmpty.style.display = '';
       categoriesFilled.style.display = 'none';
+      categoriesFilledHeader.textContent = 'Categories';
       categoriesFilledList.textContent = '';
       categoriesEditAction.style.display = 'none';
     }

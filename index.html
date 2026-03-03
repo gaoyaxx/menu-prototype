@@ -8,10 +8,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Inter+Tight:wght@500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/tokens.css">
-  <link rel="stylesheet" href="css/reset.css?v=100">
+  <link rel="stylesheet" href="css/reset.css?v=102">
   <link rel="stylesheet" href="css/layout.css?v=5">
-  <link rel="stylesheet" href="css/components.css?v=6">
-  <link rel="stylesheet" href="css/add-item.css?v=8">
+  <link rel="stylesheet" href="css/components.css?v=8">
+  <link rel="stylesheet" href="css/add-item.css?v=12">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
@@ -1194,6 +1194,48 @@
           </table>
         </div>
 
+        <!-- Bulk Action Bar -->
+        <div class="bulk-action-bar" id="bulk-action-bar" style="display:none;">
+          <span class="bulk-action-bar__count" id="bulk-action-count">0 selected</span>
+          <div class="bulk-action-bar__actions" id="bulk-action-buttons">
+            <!-- Menu Items actions (default visible) -->
+            <button class="btn btn--secondary" data-action="edit-price">
+              <span class="btn__icon btn__icon--leading">
+                <i data-lucide="dollar-sign" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+              <span>Edit price</span>
+            </button>
+            <button class="btn btn--secondary" data-action="edit-tax">
+              <span class="btn__icon btn__icon--leading">
+                <i data-lucide="percent" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+              <span>Edit tax rate</span>
+            </button>
+            <button class="btn btn--secondary" data-action="edit-station">
+              <span class="btn__icon btn__icon--leading">
+                <i data-lucide="store" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+              <span>Edit station</span>
+            </button>
+            <button class="btn btn--secondary" data-action="edit-availability">
+              <span class="btn__icon btn__icon--leading">
+                <i data-lucide="eye" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+              <span>Edit availability</span>
+            </button>
+            <button class="btn btn--danger-secondary" data-action="delete">
+              <span class="btn__icon btn__icon--leading">
+                <i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+              <span>Delete</span>
+            </button>
+          </div>
+          <div class="bulk-action-bar__divider"></div>
+          <button class="bulk-action-bar__dismiss" id="bulk-action-dismiss" aria-label="Dismiss">
+            <i data-lucide="x" class="lucide-icon" style="width:16px;height:16px"></i>
+          </button>
+        </div>
+
       </main>
     </div>
   </div>
@@ -1629,7 +1671,7 @@
         <button class="takeover__nav-close" id="takeover-close" aria-label="Close">
           <i data-lucide="x" class="lucide-icon" style="width:20px;height:20px"></i>
         </button>
-        <span class="takeover__nav-title">Add menu item</span>
+        <span class="takeover__nav-title" id="takeover-nav-title">Add menu item</span>
       </div>
       <div class="takeover__nav-right">
         <span class="takeover__nav-help">Save keeps your changes in draft. Publish updates your live menu across selected locations and channels.</span>
@@ -1770,9 +1812,9 @@
             </button>
           </div>
           <!-- Prefilled state -->
-          <div class="price-row" id="pricing-prefilled" style="display:none">
-            <span class="price-row__amount" id="pricing-amount"></span>
-            <span class="price-row__locations">4 locations</span>
+          <div class="category-filled-card" id="pricing-prefilled" style="display:none">
+            <div class="category-filled-card__header" id="pricing-amount"></div>
+            <div class="category-filled-card__list">4 locations</div>
           </div>
         </div>
 
@@ -1797,7 +1839,7 @@
           </div>
           <!-- Filled state -->
           <div class="category-filled-card" id="categories-filled" style="display:none">
-            <div class="category-filled-card__header">Categories</div>
+            <div class="category-filled-card__header" id="categories-filled-header">Categories</div>
             <div class="category-filled-card__list" id="categories-filled-list"></div>
           </div>
         </div>
@@ -2034,14 +2076,14 @@
   <!-- JavaScript -->
   <script src="js/sidebar.js?v=2"></script>
   <script src="js/tabs.js"></script>
-  <script src="js/table.js"></script>
+  <script src="js/table.js?v=2"></script>
   <script src="js/filters.js"></script>
   <script src="js/columns.js"></script>
   <script src="js/row-actions.js"></script>
   <script src="js/sort.js"></script>
   <script src="js/sticky-header.js"></script>
   <script src="js/tooltips.js"></script>
-  <script src="js/add-item.js?v=14"></script>
+  <script src="js/add-item.js?v=18"></script>
   <script src="js/multiselect.js"></script>
   <script>
     // Initialize Lucide icons

@@ -167,7 +167,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // ── Column indices ──
+  // ── Modifier Groups tooltip data ──
+  const mgData = window._tooltipMgData = {
+    'Choice of Cake': {
+      items: ['Banana Pudding Chess', 'Oreo', 'Lemon'],
+      usedBy: ['Cakes'],
+      locations: ["PT's Fried Chicken and Fish - dallas o"],
+      channels: ['Doordash', 'UberEats']
+    },
+    'Egg Style': {
+      items: ['Scrambled Eggs', 'Over Hard'],
+      usedBy: ['Waffle Breakfast Plate', 'Chicken and Waffles Plate', 'Pancake Breakfast Plate', 'Big Breakfast Plate', 'French Toast Plate'],
+      locations: ["PT's Fried Chicken and Fish - dallas o"],
+      channels: ['Doordash', 'UberEats']
+    },
+    'Plate Add Ons': {
+      items: ['Extra Syrup', 'Extra Butter', 'White American Cheese', 'Yellow American Cheese', 'Hash Brown', 'Extra Toast', 'Extra Egg', 'Bacon Two', 'Ham', 'Sausage', 'Extra Pancake', 'Extra Waffle'],
+      usedBy: ['Waffle Breakfast Plate', 'Chicken and Waffles Plate', 'Pancake Breakfast Plate', 'Big Breakfast Plate', 'French Toast Plate'],
+      locations: ["PT's Fried Chicken and Fish - dallas o"],
+      channels: ['Doordash', 'UberEats']
+    },
+    'Choice of American Cheese': {
+      items: ['White Cheese', 'Yellow Cheese'],
+      usedBy: ['Eggy Taco', 'Hammy Eggy Taco', 'Porky Eggy Taco', 'Eggy Sausage Taco', 'Veggie Eggy Taco', 'Biggy Eggy Taco'],
+      locations: ["PT's Fried Chicken and Fish - dallas o"],
+      channels: ['Doordash', 'UberEats']
+    },
+    'Choice of Add Ons': {
+      items: ['Onions', 'White American Cheese', 'Yellow American Cheese', 'Hash Brown', 'Extra Egg', 'Bacon Two', 'Ham', 'Sausage'],
+      usedBy: ['Eggy Taco', 'Hammy Eggy Taco', 'Porky Eggy Taco', 'Eggy Sausage Taco', 'Veggie Eggy Taco', 'Biggy Eggy Taco'],
+      locations: ["PT's Fried Chicken and Fish - dallas o"],
+      channels: ['Doordash', 'UberEats']
+    }
+  };
+
+  // ── Menu Items column indices ──
   const COL_USED_IN = 5;      // category
   const COL_CONTAINS = 6;     // modifier groups
   const COL_LOCATIONS = 7;
@@ -234,6 +268,69 @@ document.addEventListener('DOMContentLoaded', () => {
     wrapper.appendChild(text);
 
     cell.appendChild(wrapper);
+  }
+
+  // ── Update Modifier Groups table rows ──
+  const MG_COL_ITEMS = 5;
+  const MG_COL_USED_BY = 6;
+  const MG_COL_LOCATIONS = 7;
+  const MG_COL_CHANNELS = 8;
+
+  const mgTbody = document.querySelector('#mg-data-table tbody');
+  if (mgTbody) {
+    mgTbody.querySelectorAll('tr').forEach(row => {
+      const nameEl = row.querySelector('.cell-name-text');
+      if (!nameEl) return;
+      const name = nameEl.textContent.trim();
+      const data = mgData[name];
+      if (!data) return;
+
+      const cells = row.querySelectorAll('td');
+
+      makeCellHoverable(cells[MG_COL_ITEMS], data.items.length, 'modifier item', 'modifier items', data.items);
+      makeCellHoverable(cells[MG_COL_USED_BY], data.usedBy.length, 'menu item', 'menu items', data.usedBy);
+      makeCellHoverable(cells[MG_COL_LOCATIONS], data.locations.length, 'location', 'locations', data.locations);
+      makeCellHoverable(cells[MG_COL_CHANNELS], data.channels.length, 'channel', 'channels', data.channels);
+    });
+  }
+
+  // ── Menus table tooltip data ──
+  const menusData = {
+    'All Day Menu': {
+      categories: ['Drinks', 'Desserts', 'Sides', 'Breakfast plate', 'Breakfast tacos'],
+      items: Object.keys(itemData),
+      locations: ["PT's Fried Chicken and Fish - dallas o"],
+      channels: ['Doordash', 'UberEats']
+    },
+    'Drink Menu': {
+      categories: ['Drinks'],
+      items: ['Coke Can', 'Sprite Can', 'Kool-Aid'],
+      locations: ["PT's Fried Chicken and Fish - dallas o"],
+      channels: ['Doordash', 'UberEats']
+    }
+  };
+
+  const MENUS_COL_CONTAINS = 3;
+  const MENUS_COL_ITEMS = 4;
+  const MENUS_COL_LOCATIONS = 5;
+  const MENUS_COL_CHANNELS = 6;
+
+  const menusTbody = document.querySelector('#menus-data-table tbody');
+  if (menusTbody) {
+    menusTbody.querySelectorAll('tr').forEach(row => {
+      const nameEl = row.querySelector('.cell-name-text');
+      if (!nameEl) return;
+      const name = nameEl.textContent.trim();
+      const data = menusData[name];
+      if (!data) return;
+
+      const cells = row.querySelectorAll('td');
+
+      makeCellHoverable(cells[MENUS_COL_CONTAINS], data.categories.length, 'category', 'categories', data.categories);
+      makeCellHoverable(cells[MENUS_COL_ITEMS], data.items.length, 'menu item', 'menu items', data.items);
+      makeCellHoverable(cells[MENUS_COL_LOCATIONS], data.locations.length, 'location', 'locations', data.locations);
+      makeCellHoverable(cells[MENUS_COL_CHANNELS], data.channels.length, 'channel', 'channels', data.channels);
+    });
   }
 
   // ── Tooltip show/hide on hover ──

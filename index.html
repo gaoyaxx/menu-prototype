@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/reset.css?v=102">
   <link rel="stylesheet" href="css/layout.css?v=5">
-  <link rel="stylesheet" href="css/components.css?v=8">
+  <link rel="stylesheet" href="css/components.css?v=10">
   <link rel="stylesheet" href="css/add-item.css?v=12">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
@@ -173,6 +173,9 @@
             </button>
           </div>
         </div>
+
+        <!-- ===== TAB: MENU ITEMS ===== -->
+        <div id="tab-menu-items" class="tab-content">
 
         <!-- TEMPLATE: Info Banner -->
         <div class="info-banner">
@@ -1236,6 +1239,497 @@
           </button>
         </div>
 
+        </div><!-- /tab-menu-items -->
+
+        <!-- ===== TAB: MENUS ===== -->
+        <div id="tab-menus" class="tab-content" style="display:none">
+
+        <!-- Info Banner -->
+        <div class="info-banner">
+          <div class="info-banner__illustration">
+            <img src="assets/menu icon.png" alt="Menus illustration">
+          </div>
+          <div class="info-banner__content">
+            <div class="info-banner__text">
+              <p class="info-banner__title">Menus group the items you offer for specific times, locations, or channels, such as Breakfast, Lunch, or Delivery menus.</p>
+            </div>
+            <div class="info-banner__actions">
+              <button class="btn btn--secondary">
+                <span>Learn more</span>
+                <span class="btn__icon btn__icon--trailing">
+                  <i data-lucide="external-link" class="lucide-icon" style="width:14px;height:14px"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+          <div class="filter-bar__filters">
+            <button class="filter-btn">
+              <span>Locations</span>
+              <span class="filter-btn__arrow">
+                <i data-lucide="chevron-down" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+            </button>
+            <button class="filter-btn">
+              <span>Channels</span>
+              <span class="filter-btn__arrow">
+                <i data-lucide="chevron-down" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+            </button>
+          </div>
+          <div class="filter-bar__search-area">
+            <div class="search-input">
+              <i data-lucide="search" class="lucide-icon search-input__icon" style="width:16px;height:16px"></i>
+              <input class="search-input__field" type="text" placeholder="Search...">
+            </div>
+            <div class="column-toggle" id="menus-column-toggle">
+              <button class="btn btn--icon-only column-toggle__trigger" id="menus-column-toggle-btn" aria-label="Toggle columns">
+                <i data-lucide="columns-3" class="lucide-icon" style="width:16px;height:16px"></i>
+              </button>
+              <div class="column-toggle__dropdown" id="menus-column-toggle-dropdown">
+                <div class="column-toggle__header">
+                  <span class="column-toggle__title">Columns</span>
+                </div>
+                <div class="column-toggle__list" id="menus-column-toggle-list"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="data-table-wrapper" id="menus-table-wrapper">
+          <table class="data-table" id="menus-data-table">
+            <thead>
+              <tr>
+                <th class="col-checkbox"><input type="checkbox" class="table-checkbox" id="menus-select-all"></th>
+                <th class="col-menus-display-name">Display name</th>
+                <th class="col-menus-internal-name">Internal name</th>
+                <th class="col-menus-contains">Contains</th>
+                <th class="col-menus-items">Menu items</th>
+                <th class="col-menus-locations">Locations</th>
+                <th class="col-menus-channels">Channels</th>
+                <th class="col-menus-actions"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Row 1: All Day Menu -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox menus-table-checkbox"></td>
+                <td><span class="cell-name-text">All Day Menu</span></td>
+                <td>All Day Menu</td>
+                <td>5 categories</td>
+                <td>23 menu items</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td class="col-menus-actions">
+                  <div class="row-action">
+                    <button class="row-action__trigger" aria-label="Row actions">
+                      <i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i>
+                    </button>
+                    <div class="row-action__menu">
+                      <button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate menu</span></button>
+                      <button class="row-action__item"><i data-lucide="archive" class="lucide-icon" style="width:14px;height:14px"></i><span>Archive menu</span></button>
+                      <button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete menu</span></button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <!-- Row 2: Drink Menu -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox menus-table-checkbox"></td>
+                <td><span class="cell-name-text">Drink Menu</span></td>
+                <td>Drink Menu</td>
+                <td>1 category</td>
+                <td>3 menu items</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td class="col-menus-actions">
+                  <div class="row-action">
+                    <button class="row-action__trigger" aria-label="Row actions">
+                      <i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i>
+                    </button>
+                    <div class="row-action__menu">
+                      <button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate menu</span></button>
+                      <button class="row-action__item"><i data-lucide="archive" class="lucide-icon" style="width:14px;height:14px"></i><span>Archive menu</span></button>
+                      <button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete menu</span></button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Bulk Action Bar (Menus) -->
+        <div class="bulk-action-bar" id="menus-bulk-action-bar" style="display:none;">
+          <span class="bulk-action-bar__count" id="menus-bulk-action-count">0 selected</span>
+          <div class="bulk-action-bar__actions">
+            <button class="btn btn--secondary" data-action="archive">
+              <span class="btn__icon btn__icon--leading">
+                <i data-lucide="archive" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+              <span>Archive</span>
+            </button>
+            <button class="btn btn--danger-secondary" data-action="delete">
+              <span class="btn__icon btn__icon--leading">
+                <i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+              <span>Delete</span>
+            </button>
+          </div>
+          <div class="bulk-action-bar__divider"></div>
+          <button class="bulk-action-bar__dismiss" id="menus-bulk-action-dismiss" aria-label="Dismiss">
+            <i data-lucide="x" class="lucide-icon" style="width:16px;height:16px"></i>
+          </button>
+        </div>
+
+        </div><!-- /tab-menus -->
+
+        <!-- ===== TAB: MODIFIER ITEMS ===== -->
+        <div id="tab-modifier-items" class="tab-content" style="display:none">
+
+        <!-- Info Banner -->
+        <div class="info-banner">
+          <div class="info-banner__illustration">
+            <img src="assets/menu icon.png" alt="Modifier items illustration">
+          </div>
+          <div class="info-banner__content">
+            <div class="info-banner__text">
+              <p class="info-banner__title">Modifiers are options that customize a menu item. A modifier can be a simple option (like No onions) or another menu item (like Add fries or Extra patty).</p>
+            </div>
+            <div class="info-banner__actions">
+              <button class="btn btn--secondary">
+                <span>Learn more</span>
+                <span class="btn__icon btn__icon--trailing">
+                  <i data-lucide="external-link" class="lucide-icon" style="width:14px;height:14px"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+          <div class="filter-bar__filters">
+            <button class="filter-btn">
+              <span>Modifier groups</span>
+              <span class="filter-btn__arrow">
+                <i data-lucide="chevron-down" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+            </button>
+            <button class="filter-btn">
+              <span>Locations</span>
+              <span class="filter-btn__arrow">
+                <i data-lucide="chevron-down" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+            </button>
+            <button class="filter-btn">
+              <span>Station profiles</span>
+              <span class="filter-btn__arrow">
+                <i data-lucide="chevron-down" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+            </button>
+            <button class="filter-btn">
+              <span>Channels</span>
+              <span class="filter-btn__arrow">
+                <i data-lucide="chevron-down" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+            </button>
+          </div>
+          <div class="filter-bar__search-area">
+            <div class="search-input">
+              <i data-lucide="search" class="lucide-icon search-input__icon" style="width:16px;height:16px"></i>
+              <input class="search-input__field" type="text" placeholder="Search...">
+            </div>
+          </div>
+        </div>
+
+        </div><!-- /tab-modifier-items -->
+
+        <!-- ===== TAB: CATEGORIES ===== -->
+        <div id="tab-categories" class="tab-content" style="display:none">
+
+        <!-- Info Banner -->
+        <div class="info-banner">
+          <div class="info-banner__illustration">
+            <img src="assets/menu icon.png" alt="Categories illustration">
+          </div>
+          <div class="info-banner__content">
+            <div class="info-banner__text">
+              <p class="info-banner__title">Categories organize menu items into clear sections, such as Appetizers, Mains, or Drinks.</p>
+            </div>
+            <div class="info-banner__actions">
+              <button class="btn btn--secondary">
+                <span>Learn more</span>
+                <span class="btn__icon btn__icon--trailing">
+                  <i data-lucide="external-link" class="lucide-icon" style="width:14px;height:14px"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+          <div class="filter-bar__filters">
+            <button class="filter-btn">
+              <span>Menus</span>
+              <span class="filter-btn__arrow">
+                <i data-lucide="chevron-down" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+            </button>
+            <button class="filter-btn">
+              <span>Locations</span>
+              <span class="filter-btn__arrow">
+                <i data-lucide="chevron-down" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+            </button>
+            <button class="filter-btn">
+              <span>Channels</span>
+              <span class="filter-btn__arrow">
+                <i data-lucide="chevron-down" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+            </button>
+          </div>
+          <div class="filter-bar__search-area">
+            <div class="search-input">
+              <i data-lucide="search" class="lucide-icon search-input__icon" style="width:16px;height:16px"></i>
+              <input class="search-input__field" type="text" placeholder="Search...">
+            </div>
+          </div>
+        </div>
+
+        </div><!-- /tab-categories -->
+
+        <!-- ===== TAB: MODIFIER GROUPS ===== -->
+        <div id="tab-modifier-groups" class="tab-content" style="display:none">
+
+        <!-- Info Banner -->
+        <div class="info-banner">
+          <div class="info-banner__illustration">
+            <img src="assets/menu icon.png" alt="Modifier groups illustration">
+          </div>
+          <div class="info-banner__content">
+            <div class="info-banner__text">
+              <p class="info-banner__title">Modifier groups organize the choices available for a menu item, such as size, toppings, or add-ons.</p>
+            </div>
+            <div class="info-banner__actions">
+              <button class="btn btn--secondary">
+                <span>Learn more</span>
+                <span class="btn__icon btn__icon--trailing">
+                  <i data-lucide="external-link" class="lucide-icon" style="width:14px;height:14px"></i>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="filter-bar">
+          <div class="filter-bar__filters">
+            <button class="filter-btn">
+              <span>Modifier group type</span>
+              <span class="filter-btn__arrow">
+                <i data-lucide="chevron-down" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+            </button>
+            <button class="filter-btn">
+              <span>Locations</span>
+              <span class="filter-btn__arrow">
+                <i data-lucide="chevron-down" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+            </button>
+            <button class="filter-btn">
+              <span>Channels</span>
+              <span class="filter-btn__arrow">
+                <i data-lucide="chevron-down" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+            </button>
+          </div>
+          <div class="filter-bar__search-area">
+            <div class="search-input">
+              <i data-lucide="search" class="lucide-icon search-input__icon" style="width:16px;height:16px"></i>
+              <input class="search-input__field" type="text" placeholder="Search...">
+            </div>
+            <div class="column-toggle" id="mg-column-toggle">
+              <button class="btn btn--icon-only column-toggle__trigger" id="mg-column-toggle-btn" aria-label="Toggle columns">
+                <i data-lucide="columns-3" class="lucide-icon" style="width:16px;height:16px"></i>
+              </button>
+              <div class="column-toggle__dropdown" id="mg-column-toggle-dropdown">
+                <div class="column-toggle__header">
+                  <span class="column-toggle__title">Columns</span>
+                </div>
+                <div class="column-toggle__list" id="mg-column-toggle-list"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="data-table-wrapper" id="mg-table-wrapper">
+          <table class="data-table" id="mg-data-table">
+            <thead>
+              <tr>
+                <th class="col-checkbox"><input type="checkbox" class="table-checkbox" id="mg-select-all"></th>
+                <th class="col-mg-display-name">Display name</th>
+                <th class="col-mg-internal-name">Internal name</th>
+                <th class="col-mg-type">Modifier group type</th>
+                <th class="col-mg-rule">Selection rule</th>
+                <th class="col-mg-items">Modifier items</th>
+                <th class="col-mg-used-by">Used by</th>
+                <th class="col-mg-locations">Locations</th>
+                <th class="col-mg-channels">Channels</th>
+                <th class="col-mg-actions"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Row 1: Choice of Cake -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mg-table-checkbox"></td>
+                <td><span class="cell-name-text">Choice of Cake</span></td>
+                <td>Choice of Cake</td>
+                <td>Product variation</td>
+                <td>Required · Total 1 · Each 1</td>
+                <td>3 modifier items</td>
+                <td>1 menu item</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td class="col-mg-actions">
+                  <div class="row-action">
+                    <button class="row-action__trigger" aria-label="Row actions">
+                      <i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i>
+                    </button>
+                    <div class="row-action__menu">
+                      <button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier group</span></button>
+                      <button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier group</span></button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <!-- Row 2: Egg Style -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mg-table-checkbox"></td>
+                <td><span class="cell-name-text">Egg Style</span></td>
+                <td>Egg Style</td>
+                <td>Product variation</td>
+                <td>Required · Total 1 · Each 1</td>
+                <td>2 modifier items</td>
+                <td>5 menu items</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td class="col-mg-actions">
+                  <div class="row-action">
+                    <button class="row-action__trigger" aria-label="Row actions">
+                      <i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i>
+                    </button>
+                    <div class="row-action__menu">
+                      <button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier group</span></button>
+                      <button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier group</span></button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <!-- Row 3: Plate Add Ons -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mg-table-checkbox"></td>
+                <td><span class="cell-name-text">Plate Add Ons</span></td>
+                <td>Plate Add Ons</td>
+                <td>Add-on</td>
+                <td>Optional · Total 0–any · Each 1</td>
+                <td>12 modifier items</td>
+                <td>5 menu items</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td class="col-mg-actions">
+                  <div class="row-action">
+                    <button class="row-action__trigger" aria-label="Row actions">
+                      <i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i>
+                    </button>
+                    <div class="row-action__menu">
+                      <button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier group</span></button>
+                      <button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier group</span></button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <!-- Row 4: Choice of American Cheese -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mg-table-checkbox"></td>
+                <td><span class="cell-name-text">Choice of American Cheese</span></td>
+                <td>Choice of American Cheese</td>
+                <td>Product variation</td>
+                <td>Required · Total 1 · Each 1</td>
+                <td>2 modifier items</td>
+                <td>6 menu items</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td class="col-mg-actions">
+                  <div class="row-action">
+                    <button class="row-action__trigger" aria-label="Row actions">
+                      <i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i>
+                    </button>
+                    <div class="row-action__menu">
+                      <button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier group</span></button>
+                      <button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier group</span></button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <!-- Row 5: Choice of Add Ons -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mg-table-checkbox"></td>
+                <td><span class="cell-name-text">Choice of Add Ons</span></td>
+                <td>Choice of Add Ons</td>
+                <td>Add-on</td>
+                <td>Optional · Total 0–any · Each 1</td>
+                <td>8 modifier items</td>
+                <td>6 menu items</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td class="col-mg-actions">
+                  <div class="row-action">
+                    <button class="row-action__trigger" aria-label="Row actions">
+                      <i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i>
+                    </button>
+                    <div class="row-action__menu">
+                      <button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier group</span></button>
+                      <button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier group</span></button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Bulk Action Bar (Modifier Groups) -->
+        <div class="bulk-action-bar" id="mg-bulk-action-bar" style="display:none;">
+          <span class="bulk-action-bar__count" id="mg-bulk-action-count">0 selected</span>
+          <div class="bulk-action-bar__actions">
+            <button class="btn btn--secondary" data-action="assign-to-menu-items">
+              <span class="btn__icon btn__icon--leading">
+                <i data-lucide="link" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+              <span>Assign to menu items</span>
+            </button>
+            <button class="btn btn--danger-secondary" data-action="delete">
+              <span class="btn__icon btn__icon--leading">
+                <i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+              <span>Delete</span>
+            </button>
+          </div>
+          <div class="bulk-action-bar__divider"></div>
+          <button class="bulk-action-bar__dismiss" id="mg-bulk-action-dismiss" aria-label="Dismiss">
+            <i data-lucide="x" class="lucide-icon" style="width:16px;height:16px"></i>
+          </button>
+        </div>
+
+        </div><!-- /tab-modifier-groups -->
+
       </main>
     </div>
   </div>
@@ -2075,14 +2569,16 @@
 
   <!-- JavaScript -->
   <script src="js/sidebar.js?v=2"></script>
-  <script src="js/tabs.js"></script>
+  <script src="js/tabs.js?v=2"></script>
   <script src="js/table.js?v=2"></script>
   <script src="js/filters.js"></script>
   <script src="js/columns.js"></script>
   <script src="js/row-actions.js"></script>
   <script src="js/sort.js"></script>
   <script src="js/sticky-header.js"></script>
-  <script src="js/tooltips.js"></script>
+  <script src="js/tooltips.js?v=3"></script>
+  <script src="js/mg-table.js"></script>
+  <script src="js/menus-table.js"></script>
   <script src="js/add-item.js?v=18"></script>
   <script src="js/multiselect.js"></script>
   <script>

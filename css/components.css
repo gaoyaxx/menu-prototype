@@ -547,7 +547,8 @@
 /* <!-- TEMPLATE: Data Table --> */
 .data-table-wrapper {
   border: 1px solid var(--color-divider-standard);
-  border-radius: 0;
+  border-radius: 16px;
+  overflow: hidden;
   overflow-x: auto;
 }
 
@@ -796,6 +797,26 @@
 .col-channels { min-width: 80px; }
 .col-availability { min-width: 130px; }
 .col-actions { width: 48px; min-width: 48px; text-align: center; }
+
+/* Modifier Groups table column widths */
+.col-mg-display-name { min-width: 190px; }
+.col-mg-internal-name { min-width: 120px; }
+.col-mg-type { min-width: 140px; }
+.col-mg-rule { min-width: 160px; }
+.col-mg-items { min-width: 110px; }
+.col-mg-used-by { min-width: 110px; }
+.col-mg-locations { min-width: 95px; }
+.col-mg-channels { min-width: 80px; }
+.col-mg-actions { width: 48px; min-width: 48px; text-align: center; }
+
+/* Menus table columns */
+.col-menus-display-name { min-width: 190px; }
+.col-menus-internal-name { min-width: 150px; }
+.col-menus-contains { min-width: 120px; }
+.col-menus-items { min-width: 120px; }
+.col-menus-locations { min-width: 95px; }
+.col-menus-channels { min-width: 80px; }
+.col-menus-actions { width: 48px; min-width: 48px; text-align: center; }
 
 /* ===== FROZEN COLUMNS (horizontal scroll) ===== */
 /* Freeze checkbox (col 1) and display name (col 2) */

@@ -593,6 +593,7 @@
 .data-table thead.is-sticky {
   position: relative;
   z-index: 4;
+  box-shadow: 0 1px 0 0 var(--color-divider-weak);
 }
 
 /* Sortable columns */
@@ -817,6 +818,18 @@
 .col-menus-locations { min-width: 95px; }
 .col-menus-channels { min-width: 80px; }
 .col-menus-actions { width: 48px; min-width: 48px; text-align: center; }
+
+/* Modifier Items table columns */
+.col-mi-display-name { min-width: 190px; }
+.col-mi-internal-name { min-width: 150px; }
+.col-mi-sku { min-width: 160px; }
+.col-mi-used-in { min-width: 120px; }
+.col-mi-contains { min-width: 120px; }
+.col-mi-stations { min-width: 110px; }
+.col-mi-locations { min-width: 95px; }
+.col-mi-channels { min-width: 80px; }
+.col-mi-availability { min-width: 130px; }
+.col-mi-actions { width: 48px; min-width: 48px; text-align: center; }
 
 /* ===== FROZEN COLUMNS (horizontal scroll) ===== */
 /* Freeze checkbox (col 1) and display name (col 2) */

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/reset.css?v=102">
   <link rel="stylesheet" href="css/layout.css?v=5">
-  <link rel="stylesheet" href="css/components.css?v=10">
+  <link rel="stylesheet" href="css/components.css?v=11">
   <link rel="stylesheet" href="css/add-item.css?v=12">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
@@ -1444,7 +1444,321 @@
               <i data-lucide="search" class="lucide-icon search-input__icon" style="width:16px;height:16px"></i>
               <input class="search-input__field" type="text" placeholder="Search...">
             </div>
+            <div class="column-toggle" id="mi-column-toggle">
+              <button class="btn btn--icon-only column-toggle__trigger" id="mi-column-toggle-btn" aria-label="Toggle columns">
+                <i data-lucide="columns-3" class="lucide-icon" style="width:16px;height:16px"></i>
+              </button>
+              <div class="column-toggle__dropdown" id="mi-column-toggle-dropdown">
+                <div class="column-toggle__header">
+                  <span class="column-toggle__title">Columns</span>
+                </div>
+                <div class="column-toggle__list" id="mi-column-toggle-list"></div>
+              </div>
+            </div>
           </div>
+        </div>
+
+        <!-- Data Table -->
+        <div class="data-table-wrapper" id="mi-table-wrapper">
+          <table class="data-table" id="mi-data-table">
+            <thead>
+              <tr>
+                <th class="col-checkbox"><input type="checkbox" class="table-checkbox" id="mi-select-all"></th>
+                <th class="col-mi-display-name">Display name</th>
+                <th class="col-mi-internal-name">Internal name</th>
+                <th class="col-mi-sku">Item SKU</th>
+                <th class="col-mi-used-in">Used in</th>
+                <th class="col-mi-contains">Contains</th>
+                <th class="col-mi-stations">Station profiles</th>
+                <th class="col-mi-locations">Locations</th>
+                <th class="col-mi-channels">Channels</th>
+                <th class="col-mi-availability">Availability</th>
+                <th class="col-mi-actions"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Row 1 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">Banana Pudding Chess</span></td>
+                <td>Banana Pudding Chess</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">banana-pudding-chess</span><span class="cell-sku-id">BPC-001</span></div></td>
+                <td>1 modifier group</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 2 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">Oreo</span></td>
+                <td>Oreo</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">oreo</span><span class="cell-sku-id">ORE-001</span></div></td>
+                <td>1 modifier group</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 3 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">Lemon</span></td>
+                <td>Lemon</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">lemon</span><span class="cell-sku-id">LEM-001</span></div></td>
+                <td>1 modifier group</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 4 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">Scrambled Eggs</span></td>
+                <td>Scrambled Eggs</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">scrambled-eggs</span><span class="cell-sku-id">SCE-001</span></div></td>
+                <td>1 modifier group</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 5 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">Over Hard</span></td>
+                <td>Over Hard</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">over-hard</span><span class="cell-sku-id">OVH-001</span></div></td>
+                <td>1 modifier group</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 6 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">Extra Syrup</span></td>
+                <td>Extra Syrup</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">extra-syrup</span><span class="cell-sku-id">EXS-001</span></div></td>
+                <td>1 modifier group</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 7 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">Extra Butter</span></td>
+                <td>Extra Butter</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">extra-butter</span><span class="cell-sku-id">EXB-001</span></div></td>
+                <td>1 modifier group</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 8 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">White American Cheese</span></td>
+                <td>White American Cheese</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">white-american-cheese</span><span class="cell-sku-id">WAC-001</span></div></td>
+                <td>2 modifier groups</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 9 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">Yellow American Cheese</span></td>
+                <td>Yellow American Cheese</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">yellow-american-cheese</span><span class="cell-sku-id">YAC-001</span></div></td>
+                <td>2 modifier groups</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 10 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">Hash Brown</span></td>
+                <td>Hash Brown</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">hash-brown</span><span class="cell-sku-id">HSB-001</span></div></td>
+                <td>2 modifier groups</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 11 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">Extra Toast</span></td>
+                <td>Extra Toast</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">extra-toast</span><span class="cell-sku-id">EXT-001</span></div></td>
+                <td>1 modifier group</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 12 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">Extra Egg</span></td>
+                <td>Extra Egg</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">extra-egg</span><span class="cell-sku-id">EXE-001</span></div></td>
+                <td>2 modifier groups</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 13 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">Bacon Two</span></td>
+                <td>Bacon Two</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">bacon-two</span><span class="cell-sku-id">BAC-001</span></div></td>
+                <td>2 modifier groups</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 14 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">Ham</span></td>
+                <td>Ham</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">ham</span><span class="cell-sku-id">HAM-001</span></div></td>
+                <td>2 modifier groups</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 15 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">Sausage</span></td>
+                <td>Sausage</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">sausage-mod</span><span class="cell-sku-id">SAU-002</span></div></td>
+                <td>2 modifier groups</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 16 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">Extra Pancake</span></td>
+                <td>Extra Pancake</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">extra-pancake</span><span class="cell-sku-id">EXP-001</span></div></td>
+                <td>1 modifier group</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 17 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">Extra Waffle</span></td>
+                <td>Extra Waffle</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">extra-waffle</span><span class="cell-sku-id">EXW-001</span></div></td>
+                <td>1 modifier group</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 18 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">White Cheese</span></td>
+                <td>White Cheese</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">white-cheese</span><span class="cell-sku-id">WHC-001</span></div></td>
+                <td>1 modifier group</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 19 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">Yellow Cheese</span></td>
+                <td>Yellow Cheese</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">yellow-cheese</span><span class="cell-sku-id">YEC-001</span></div></td>
+                <td>1 modifier group</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--partial"><i data-lucide="circle-minus" class="lucide-icon" style="width:14px;height:14px"></i>Partial</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+              <!-- Row 20 -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td><span class="cell-name-text">Onions</span></td>
+                <td>Onions</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">onions</span><span class="cell-sku-id">ONI-001</span></div></td>
+                <td>1 modifier group</td>
+                <td>0 modifier groups</td>
+                <td>1 station profile</td>
+                <td>1 location</td>
+                <td>2 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
         </div><!-- /tab-modifier-items -->
@@ -2575,10 +2889,11 @@
   <script src="js/columns.js"></script>
   <script src="js/row-actions.js"></script>
   <script src="js/sort.js"></script>
-  <script src="js/sticky-header.js"></script>
-  <script src="js/tooltips.js?v=3"></script>
+  <script src="js/sticky-header.js?v=2"></script>
+  <script src="js/tooltips.js?v=4"></script>
   <script src="js/mg-table.js"></script>
   <script src="js/menus-table.js"></script>
+  <script src="js/mi-table.js"></script>
   <script src="js/add-item.js?v=18"></script>
   <script src="js/multiselect.js"></script>
   <script>

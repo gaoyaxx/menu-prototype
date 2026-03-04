@@ -333,6 +333,64 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ── Modifier Items table tooltip data ──
+  // Build reverse-lookup: modifier item → which modifier groups it belongs to
+  const miUsedInMap = {};
+  Object.keys(mgData).forEach(groupName => {
+    mgData[groupName].items.forEach(item => {
+      if (!miUsedInMap[item]) miUsedInMap[item] = [];
+      if (!miUsedInMap[item].includes(groupName)) miUsedInMap[item].push(groupName);
+    });
+  });
+
+  const miData = {
+    'Banana Pudding Chess': { usedIn: miUsedInMap['Banana Pudding Chess'] || [], contains: [], stations: ['Fried Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'Oreo':                 { usedIn: miUsedInMap['Oreo'] || [], contains: [], stations: ['Fried Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'Lemon':                { usedIn: miUsedInMap['Lemon'] || [], contains: [], stations: ['Fried Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'Scrambled Eggs':       { usedIn: miUsedInMap['Scrambled Eggs'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'Over Hard':            { usedIn: miUsedInMap['Over Hard'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'Extra Syrup':          { usedIn: miUsedInMap['Extra Syrup'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'Extra Butter':         { usedIn: miUsedInMap['Extra Butter'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'White American Cheese':{ usedIn: miUsedInMap['White American Cheese'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'Yellow American Cheese':{ usedIn: miUsedInMap['Yellow American Cheese'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'Hash Brown':           { usedIn: miUsedInMap['Hash Brown'] || [], contains: [], stations: ['Fried Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'Extra Toast':          { usedIn: miUsedInMap['Extra Toast'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'Extra Egg':            { usedIn: miUsedInMap['Extra Egg'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'Bacon Two':            { usedIn: miUsedInMap['Bacon Two'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'Ham':                  { usedIn: miUsedInMap['Ham'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'Sausage':              { usedIn: miUsedInMap['Sausage'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'Extra Pancake':        { usedIn: miUsedInMap['Extra Pancake'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'Extra Waffle':         { usedIn: miUsedInMap['Extra Waffle'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'White Cheese':         { usedIn: miUsedInMap['White Cheese'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'Yellow Cheese':        { usedIn: miUsedInMap['Yellow Cheese'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
+    'Onions':               { usedIn: miUsedInMap['Onions'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] }
+  };
+
+  const MI_COL_USED_IN = 4;
+  const MI_COL_CONTAINS = 5;
+  const MI_COL_STATIONS = 6;
+  const MI_COL_LOCATIONS = 7;
+  const MI_COL_CHANNELS = 8;
+
+  const miTbody = document.querySelector('#mi-data-table tbody');
+  if (miTbody) {
+    miTbody.querySelectorAll('tr').forEach(row => {
+      const nameEl = row.querySelector('.cell-name-text');
+      if (!nameEl) return;
+      const name = nameEl.textContent.trim();
+      const data = miData[name];
+      if (!data) return;
+
+      const cells = row.querySelectorAll('td');
+
+      makeCellHoverable(cells[MI_COL_USED_IN], data.usedIn.length, 'modifier group', 'modifier groups', data.usedIn);
+      makeCellHoverable(cells[MI_COL_CONTAINS], data.contains.length, 'modifier group', 'modifier groups', data.contains);
+      makeCellHoverable(cells[MI_COL_STATIONS], data.stations.length, 'station profile', 'station profiles', data.stations);
+      makeCellHoverable(cells[MI_COL_LOCATIONS], data.locations.length, 'location', 'locations', data.locations);
+      makeCellHoverable(cells[MI_COL_CHANNELS], data.channels.length, 'channel', 'channels', data.channels);
+    });
+  }
+
   // ── Tooltip show/hide on hover ──
   let activeTarget = null;
 

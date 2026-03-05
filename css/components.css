@@ -819,6 +819,15 @@
 .col-menus-channels { min-width: 80px; }
 .col-menus-actions { width: 48px; min-width: 48px; text-align: center; }
 
+/* Categories table columns */
+.col-cat-display-name { min-width: 190px; }
+.col-cat-internal-name { min-width: 150px; }
+.col-cat-used-in { min-width: 120px; }
+.col-cat-contains { min-width: 120px; }
+.col-cat-locations { min-width: 95px; }
+.col-cat-channels { min-width: 80px; }
+.col-cat-actions { width: 48px; min-width: 48px; text-align: center; }
+
 /* Modifier Items table columns */
 .col-mi-display-name { min-width: 190px; }
 .col-mi-internal-name { min-width: 150px; }

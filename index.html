@@ -1816,6 +1816,131 @@
           </div>
         </div>
 
+        <!-- Categories Data Table -->
+        <div class="data-table-wrapper">
+          <table class="data-table" id="cat-data-table">
+            <thead>
+              <tr>
+                <th class="col-checkbox"><input type="checkbox" class="table-checkbox" id="cat-select-all"></th>
+                <th class="col-cat-display-name">Display name</th>
+                <th class="col-cat-internal-name">Internal name</th>
+                <th class="col-cat-used-in">Used in</th>
+                <th class="col-cat-contains">Contains</th>
+                <th class="col-cat-locations">Locations</th>
+                <th class="col-cat-channels">Channels</th>
+                <th class="col-cat-actions"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- Row 1: Drinks -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox cat-table-checkbox"></td>
+                <td><span class="cell-name-text">Drinks</span></td>
+                <td>Drinks</td>
+                <td>2 menus</td>
+                <td>3 menu items</td>
+                <td>1 location</td>
+                <td>4 channels</td>
+                <td class="col-cat-actions">
+                  <div class="row-action">
+                    <button class="row-action__trigger" aria-label="Row actions">
+                      <i data-lucide="ellipsis" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i>
+                    </button>
+                    <div class="row-action__menu">
+                      <button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate category</span></button>
+                      <button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete category</span></button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <!-- Row 2: Desserts -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox cat-table-checkbox"></td>
+                <td><span class="cell-name-text">Desserts</span></td>
+                <td>Desserts</td>
+                <td>1 menu</td>
+                <td>1 menu item</td>
+                <td>1 location</td>
+                <td>3 channels</td>
+                <td class="col-cat-actions">
+                  <div class="row-action">
+                    <button class="row-action__trigger" aria-label="Row actions">
+                      <i data-lucide="ellipsis" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i>
+                    </button>
+                    <div class="row-action__menu">
+                      <button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate category</span></button>
+                      <button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete category</span></button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <!-- Row 3: Sides -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox cat-table-checkbox"></td>
+                <td><span class="cell-name-text">Sides</span></td>
+                <td>Sides</td>
+                <td>1 menu</td>
+                <td>8 menu items</td>
+                <td>1 location</td>
+                <td>5 channels</td>
+                <td class="col-cat-actions">
+                  <div class="row-action">
+                    <button class="row-action__trigger" aria-label="Row actions">
+                      <i data-lucide="ellipsis" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i>
+                    </button>
+                    <div class="row-action__menu">
+                      <button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate category</span></button>
+                      <button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete category</span></button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <!-- Row 4: Breakfast plate -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox cat-table-checkbox"></td>
+                <td><span class="cell-name-text">Breakfast plate</span></td>
+                <td>Breakfast plate</td>
+                <td>1 menu</td>
+                <td>5 menu items</td>
+                <td>1 location</td>
+                <td>5 channels</td>
+                <td class="col-cat-actions">
+                  <div class="row-action">
+                    <button class="row-action__trigger" aria-label="Row actions">
+                      <i data-lucide="ellipsis" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i>
+                    </button>
+                    <div class="row-action__menu">
+                      <button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate category</span></button>
+                      <button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete category</span></button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <!-- Row 5: Breakfast tacos -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox cat-table-checkbox"></td>
+                <td><span class="cell-name-text">Breakfast tacos</span></td>
+                <td>Breakfast tacos</td>
+                <td>1 menu</td>
+                <td>6 menu items</td>
+                <td>1 location</td>
+                <td>5 channels</td>
+                <td class="col-cat-actions">
+                  <div class="row-action">
+                    <button class="row-action__trigger" aria-label="Row actions">
+                      <i data-lucide="ellipsis" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i>
+                    </button>
+                    <div class="row-action__menu">
+                      <button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate category</span></button>
+                      <button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete category</span></button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
         </div><!-- /tab-categories -->
 
         <!-- ===== TAB: MODIFIER GROUPS ===== -->
@@ -2890,7 +3015,7 @@
   <script src="js/row-actions.js"></script>
   <script src="js/sort.js"></script>
   <script src="js/sticky-header.js?v=2"></script>
-  <script src="js/tooltips.js?v=4"></script>
+  <script src="js/tooltips.js?v=5"></script>
   <script src="js/mg-table.js"></script>
   <script src="js/menus-table.js"></script>
   <script src="js/mi-table.js"></script>

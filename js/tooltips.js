@@ -391,6 +391,66 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // ── Categories table tooltip data (derived from itemData + menusData) ──
+  // Build category → menu items mapping from itemData
+  const catItemsMap = {};
+  Object.keys(itemData).forEach(function(itemName) {
+    itemData[itemName].category.forEach(function(cat) {
+      if (!catItemsMap[cat]) catItemsMap[cat] = [];
+      catItemsMap[cat].push(itemName);
+    });
+  });
+
+  // Build category → menus mapping from menusData
+  const catMenusMap = {};
+  Object.keys(menusData).forEach(function(menuName) {
+    menusData[menuName].categories.forEach(function(cat) {
+      if (!catMenusMap[cat]) catMenusMap[cat] = [];
+      catMenusMap[cat].push(menuName);
+    });
+  });
+
+  // Build category → unique locations and channels from its items
+  const catData = {};
+  Object.keys(catItemsMap).forEach(function(cat) {
+    var locs = new Set();
+    var chs = new Set();
+    catItemsMap[cat].forEach(function(itemName) {
+      var d = itemData[itemName];
+      if (d.location) locs.add(d.location);
+      d.channels.forEach(function(ch) { chs.add(ch); });
+    });
+    catData[cat] = {
+      menus: catMenusMap[cat] || [],
+      items: catItemsMap[cat],
+      locations: Array.from(locs),
+      channels: Array.from(chs)
+    };
+  });
+
+  const CAT_COL_USED_IN = 3;
+  const CAT_COL_CONTAINS = 4;
+  const CAT_COL_LOCATIONS = 5;
+  const CAT_COL_CHANNELS = 6;
+
+  const catTbody = document.querySelector('#cat-data-table tbody');
+  if (catTbody) {
+    catTbody.querySelectorAll('tr').forEach(row => {
+      const nameEl = row.querySelector('.cell-name-text');
+      if (!nameEl) return;
+      const name = nameEl.textContent.trim();
+      const data = catData[name];
+      if (!data) return;
+
+      const cells = row.querySelectorAll('td');
+
+      makeCellHoverable(cells[CAT_COL_USED_IN], data.menus.length, 'menu', 'menus', data.menus);
+      makeCellHoverable(cells[CAT_COL_CONTAINS], data.items.length, 'menu item', 'menu items', data.items);
+      makeCellHoverable(cells[CAT_COL_LOCATIONS], data.locations.length, 'location', 'locations', data.locations);
+      makeCellHoverable(cells[CAT_COL_CHANNELS], data.channels.length, 'channel', 'channels', data.channels);
+    });
+  }
+
   // ── Tooltip show/hide on hover ──
   let activeTarget = null;
 

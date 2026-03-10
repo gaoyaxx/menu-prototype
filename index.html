@@ -10,8 +10,8 @@
   <link rel="stylesheet" href="css/tokens.css">
   <link rel="stylesheet" href="css/reset.css?v=102">
   <link rel="stylesheet" href="css/layout.css?v=5">
-  <link rel="stylesheet" href="css/components.css?v=11">
-  <link rel="stylesheet" href="css/add-item.css?v=12">
+  <link rel="stylesheet" href="css/components.css?v=12">
+  <link rel="stylesheet" href="css/add-item.css?v=15">
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
@@ -1467,6 +1467,7 @@
                 <th class="col-mi-display-name">Display name</th>
                 <th class="col-mi-internal-name">Internal name</th>
                 <th class="col-mi-sku">Item SKU</th>
+                <th class="col-mi-price">Price</th>
                 <th class="col-mi-used-in">Used in</th>
                 <th class="col-mi-contains">Contains</th>
                 <th class="col-mi-stations">Station profiles</th>
@@ -1483,6 +1484,7 @@
                 <td><span class="cell-name-text">Banana Pudding Chess</span></td>
                 <td>Banana Pudding Chess</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">banana-pudding-chess</span><span class="cell-sku-id">BPC-001</span></div></td>
+                <td>$0.00</td>
                 <td>1 modifier group</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
@@ -1497,6 +1499,7 @@
                 <td><span class="cell-name-text">Oreo</span></td>
                 <td>Oreo</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">oreo</span><span class="cell-sku-id">ORE-001</span></div></td>
+                <td>$0.00</td>
                 <td>1 modifier group</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
@@ -1511,6 +1514,7 @@
                 <td><span class="cell-name-text">Lemon</span></td>
                 <td>Lemon</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">lemon</span><span class="cell-sku-id">LEM-001</span></div></td>
+                <td>$0.00</td>
                 <td>1 modifier group</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
@@ -1525,12 +1529,13 @@
                 <td><span class="cell-name-text">Scrambled Eggs</span></td>
                 <td>Scrambled Eggs</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">scrambled-eggs</span><span class="cell-sku-id">SCE-001</span></div></td>
+                <td>$0.00</td>
                 <td>1 modifier group</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
                 <td>1 location</td>
                 <td>2 channels</td>
-                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td><span class="availability availability--partial"><i data-lucide="minus-circle" class="lucide-icon" style="width:14px;height:14px"></i>1/4 Unavailable</span></td>
                 <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
               </tr>
               <!-- Row 5 -->
@@ -1539,6 +1544,7 @@
                 <td><span class="cell-name-text">Over Hard</span></td>
                 <td>Over Hard</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">over-hard</span><span class="cell-sku-id">OVH-001</span></div></td>
+                <td>$0.00</td>
                 <td>1 modifier group</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
@@ -1553,6 +1559,7 @@
                 <td><span class="cell-name-text">Extra Syrup</span></td>
                 <td>Extra Syrup</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">extra-syrup</span><span class="cell-sku-id">EXS-001</span></div></td>
+                <td>$0.49</td>
                 <td>1 modifier group</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
@@ -1567,6 +1574,7 @@
                 <td><span class="cell-name-text">Extra Butter</span></td>
                 <td>Extra Butter</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">extra-butter</span><span class="cell-sku-id">EXB-001</span></div></td>
+                <td>$0.49</td>
                 <td>1 modifier group</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
@@ -1581,6 +1589,7 @@
                 <td><span class="cell-name-text">White American Cheese</span></td>
                 <td>White American Cheese</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">white-american-cheese</span><span class="cell-sku-id">WAC-001</span></div></td>
+                <td>$0.99</td>
                 <td>2 modifier groups</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
@@ -1595,6 +1604,7 @@
                 <td><span class="cell-name-text">Yellow American Cheese</span></td>
                 <td>Yellow American Cheese</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">yellow-american-cheese</span><span class="cell-sku-id">YAC-001</span></div></td>
+                <td>$0.99</td>
                 <td>2 modifier groups</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
@@ -1609,6 +1619,7 @@
                 <td><span class="cell-name-text">Hash Brown</span></td>
                 <td>Hash Brown</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">hash-brown</span><span class="cell-sku-id">HSB-001</span></div></td>
+                <td>$1.49</td>
                 <td>2 modifier groups</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
@@ -1623,6 +1634,7 @@
                 <td><span class="cell-name-text">Extra Toast</span></td>
                 <td>Extra Toast</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">extra-toast</span><span class="cell-sku-id">EXT-001</span></div></td>
+                <td>$1.49</td>
                 <td>1 modifier group</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
@@ -1637,6 +1649,7 @@
                 <td><span class="cell-name-text">Extra Egg</span></td>
                 <td>Extra Egg</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">extra-egg</span><span class="cell-sku-id">EXE-001</span></div></td>
+                <td>$1.99</td>
                 <td>2 modifier groups</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
@@ -1651,6 +1664,7 @@
                 <td><span class="cell-name-text">Bacon Two</span></td>
                 <td>Bacon Two</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">bacon-two</span><span class="cell-sku-id">BAC-001</span></div></td>
+                <td>$1.99</td>
                 <td>2 modifier groups</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
@@ -1665,6 +1679,7 @@
                 <td><span class="cell-name-text">Ham</span></td>
                 <td>Ham</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">ham</span><span class="cell-sku-id">HAM-001</span></div></td>
+                <td>$1.99</td>
                 <td>2 modifier groups</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
@@ -1679,6 +1694,7 @@
                 <td><span class="cell-name-text">Sausage</span></td>
                 <td>Sausage</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">sausage-mod</span><span class="cell-sku-id">SAU-002</span></div></td>
+                <td>$1.99</td>
                 <td>2 modifier groups</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
@@ -1693,6 +1709,7 @@
                 <td><span class="cell-name-text">Extra Pancake</span></td>
                 <td>Extra Pancake</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">extra-pancake</span><span class="cell-sku-id">EXP-001</span></div></td>
+                <td>$2.49</td>
                 <td>1 modifier group</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
@@ -1707,6 +1724,7 @@
                 <td><span class="cell-name-text">Extra Waffle</span></td>
                 <td>Extra Waffle</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">extra-waffle</span><span class="cell-sku-id">EXW-001</span></div></td>
+                <td>$2.49</td>
                 <td>1 modifier group</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
@@ -1721,6 +1739,7 @@
                 <td><span class="cell-name-text">White Cheese</span></td>
                 <td>White Cheese</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">white-cheese</span><span class="cell-sku-id">WHC-001</span></div></td>
+                <td>$0.00</td>
                 <td>1 modifier group</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
@@ -1735,12 +1754,13 @@
                 <td><span class="cell-name-text">Yellow Cheese</span></td>
                 <td>Yellow Cheese</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">yellow-cheese</span><span class="cell-sku-id">YEC-001</span></div></td>
+                <td>$0.00</td>
                 <td>1 modifier group</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
                 <td>1 location</td>
                 <td>2 channels</td>
-                <td><span class="availability availability--partial"><i data-lucide="circle-minus" class="lucide-icon" style="width:14px;height:14px"></i>Partial</span></td>
+                <td><span class="availability availability--partial"><i data-lucide="minus-circle" class="lucide-icon" style="width:14px;height:14px"></i>1/4 Unavailable</span></td>
                 <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
               </tr>
               <!-- Row 20 -->
@@ -1749,6 +1769,7 @@
                 <td><span class="cell-name-text">Onions</span></td>
                 <td>Onions</td>
                 <td><div class="cell-sku"><span class="cell-sku-link">onions</span><span class="cell-sku-id">ONI-001</span></div></td>
+                <td>$0.49</td>
                 <td>1 modifier group</td>
                 <td>0 modifier groups</td>
                 <td>1 station profile</td>
@@ -1757,8 +1778,63 @@
                 <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
                 <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
               </tr>
+              <!-- Row 21: Coke Can (Menu Item used as Modifier Item) -->
+              <tr>
+                <td class="col-checkbox"><input type="checkbox" class="table-checkbox mi-table-checkbox"></td>
+                <td>
+                  <div class="cell-mi-display-name">
+                    <a class="cell-menu-item-link" data-menu-item="Coke Can">Coke Can</a>
+                    <span class="cell-menu-item-badge"><i data-lucide="utensils-crossed" class="lucide-icon" style="width:12px;height:12px"></i> Menu item</span>
+                  </div>
+                </td>
+                <td>Coke Can</td>
+                <td><div class="cell-sku"><span class="cell-sku-link">coke-can</span><span class="cell-sku-id">COK-001</span></div></td>
+                <td>$1.99</td>
+                <td>1 modifier group</td>
+                <td>0 modifier groups</td>
+                <td>10 locations</td>
+                <td>3 station profiles</td>
+                <td>3 channels</td>
+                <td><span class="availability availability--available"><i data-lucide="circle-check" class="lucide-icon" style="width:14px;height:14px"></i>Available</span></td>
+                <td class="col-mi-actions"><div class="row-action"><button class="row-action__trigger" aria-label="Row actions"><i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px;color:var(--color-text-weak)"></i></button><div class="row-action__menu"><button class="row-action__item"><i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i><span>Duplicate modifier item</span></button><button class="row-action__item row-action__item--danger"><i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i><span>Delete modifier item</span></button></div></div></td>
+              </tr>
             </tbody>
           </table>
+        </div>
+
+        <!-- Bulk Action Bar (Modifier Items) -->
+        <div class="bulk-action-bar" id="mi-bulk-action-bar" style="display:none;">
+          <span class="bulk-action-bar__count" id="mi-bulk-action-count">0 selected</span>
+          <div class="bulk-action-bar__actions">
+            <button class="btn btn--secondary" data-action="edit-price">
+              <span class="btn__icon btn__icon--leading">
+                <i data-lucide="dollar-sign" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+              <span>Edit price</span>
+            </button>
+            <button class="btn btn--secondary" data-action="edit-tax">
+              <span class="btn__icon btn__icon--leading">
+                <i data-lucide="percent" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+              <span>Edit tax rate</span>
+            </button>
+            <button class="btn btn--secondary" data-action="edit-availability">
+              <span class="btn__icon btn__icon--leading">
+                <i data-lucide="eye" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+              <span>Edit availability</span>
+            </button>
+            <button class="btn btn--danger-secondary" data-action="delete">
+              <span class="btn__icon btn__icon--leading">
+                <i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+              <span>Delete</span>
+            </button>
+          </div>
+          <div class="bulk-action-bar__divider"></div>
+          <button class="bulk-action-bar__dismiss" id="mi-bulk-action-dismiss" aria-label="Dismiss">
+            <i data-lucide="x" class="lucide-icon" style="width:16px;height:16px"></i>
+          </button>
         </div>
 
         </div><!-- /tab-modifier-items -->
@@ -1939,6 +2015,29 @@
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <!-- Bulk Action Bar (Categories) -->
+        <div class="bulk-action-bar" id="cat-bulk-action-bar" style="display:none;">
+          <span class="bulk-action-bar__count" id="cat-bulk-action-count">0 selected</span>
+          <div class="bulk-action-bar__actions">
+            <button class="btn btn--secondary" data-action="duplicate">
+              <span class="btn__icon btn__icon--leading">
+                <i data-lucide="copy" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+              <span>Duplicate</span>
+            </button>
+            <button class="btn btn--danger-secondary" data-action="delete">
+              <span class="btn__icon btn__icon--leading">
+                <i data-lucide="trash-2" class="lucide-icon" style="width:14px;height:14px"></i>
+              </span>
+              <span>Delete</span>
+            </button>
+          </div>
+          <div class="bulk-action-bar__divider"></div>
+          <button class="bulk-action-bar__dismiss" id="cat-bulk-action-dismiss" aria-label="Dismiss">
+            <i data-lucide="x" class="lucide-icon" style="width:16px;height:16px"></i>
+          </button>
         </div>
 
         </div><!-- /tab-categories -->
@@ -3006,6 +3105,700 @@
     </div>
   </div>
 
+  <!-- ===== ASSIGN MODIFIER GROUP MODAL (for Add modifier item) ===== -->
+  <div class="cat-modal-overlay" id="mi-mg-modal-overlay">
+    <div class="cat-modal">
+      <div class="cat-modal__header">
+        <h2 class="cat-modal__title">Assign modifier groups</h2>
+        <button class="cat-modal__close" id="mi-mg-modal-close">
+          <i data-lucide="x" class="lucide-icon" style="width:20px;height:20px"></i>
+        </button>
+      </div>
+      <div class="cat-modal__body">
+        <div class="cat-modal__search">
+          <div class="cat-modal__search-input">
+            <i data-lucide="search" class="lucide-icon cat-modal__search-icon" style="width:16px;height:16px"></i>
+            <input type="text" class="cat-modal__search-field" id="mi-mg-search-input" placeholder="Search modifier groups">
+          </div>
+        </div>
+        <!-- Select all -->
+        <div class="cat-modal__select-all">
+          <div class="cat-modal__option" data-value="__all__">
+            <input type="checkbox" class="cat-modal__checkbox" data-value="__all__">
+            <div class="cat-modal__option-info">
+              <span class="cat-modal__option-name cat-modal__option-name--bold">Select / deselect all</span>
+            </div>
+          </div>
+        </div>
+        <div class="cat-modal__divider"></div>
+        <!-- Modifier group list -->
+        <div class="cat-modal__list" id="mi-mg-modal-list"></div>
+        <div class="cat-modal__empty" id="mi-mg-modal-empty">No modifier groups found</div>
+      </div>
+      <div class="cat-modal__footer">
+        <button class="btn btn--secondary" id="mi-mg-modal-create-new">
+          <i data-lucide="plus" class="lucide-icon" style="width:14px;height:14px"></i>
+          <span>Create new</span>
+        </button>
+        <button class="btn btn--primary" id="mi-mg-modal-confirm" disabled>Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ADD MODIFIER GROUPS MODAL (for Add modifier item) ===== -->
+  <div class="mg-modal-overlay" id="mi-addmg-modal-overlay">
+    <div class="mg-modal">
+      <div class="mg-modal__header">
+        <h2 class="mg-modal__title">Add modifier groups</h2>
+        <button class="mg-modal__close" id="mi-addmg-modal-close" aria-label="Close">
+          <i data-lucide="x" class="lucide-icon" style="width:20px;height:20px"></i>
+        </button>
+      </div>
+      <div class="mg-modal__body">
+        <div class="mg-modal__search">
+          <div class="mg-modal__search-input">
+            <i data-lucide="search" class="lucide-icon mg-modal__search-icon"></i>
+            <input type="text" class="mg-modal__search-field" id="mi-addmg-search-input" placeholder="Search modifier group" autocomplete="off">
+          </div>
+        </div>
+        <!-- Select All -->
+        <div class="mg-modal__select-all">
+          <div class="mg-modal__option" data-value="__all__">
+            <input type="checkbox" class="mg-modal__checkbox" data-value="__all__">
+            <div class="mg-modal__option-info">
+              <span class="mg-modal__option-name mg-modal__option-name--bold">Select / deselect all</span>
+            </div>
+            <span class="mg-modal__option-count" id="mi-addmg-modal-count"></span>
+          </div>
+        </div>
+        <div class="mg-modal__list" id="mi-addmg-modal-list"></div>
+        <div class="mg-modal__empty" id="mi-addmg-modal-empty">No modifier groups found</div>
+      </div>
+      <div class="mg-modal__footer">
+        <div class="mg-modal__footer-left">
+          <button class="btn btn--secondary" id="mi-addmg-modal-create-new">
+            <i data-lucide="plus" class="lucide-icon" style="width:14px;height:14px"></i>
+            <span>Create new</span>
+          </button>
+        </div>
+        <button class="btn btn--primary" id="mi-addmg-modal-confirm" disabled>Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SKU SELECTION MODAL: Modifier Item ===== -->
+  <div class="sku-modal-overlay" id="mi-sku-modal-overlay">
+    <div class="sku-modal">
+      <div class="sku-modal__header">
+        <h2 class="sku-modal__title" id="mi-sku-modal-title">Add modifier item</h2>
+        <button class="sku-modal__close" id="mi-sku-modal-close" aria-label="Close">
+          <i data-lucide="x" class="lucide-icon" style="width:20px;height:20px"></i>
+        </button>
+      </div>
+      <div class="sku-modal__body">
+        <p class="sku-modal__desc">To keep your menu and inventory consistent, start by searching your existing SKU library.<br>If you don't find what you need, you can create a new modifier item.</p>
+        <div class="sku-modal__search">
+          <div class="sku-modal__search-input">
+            <i data-lucide="search" class="lucide-icon sku-modal__search-icon" style="width:16px;height:16px"></i>
+            <input class="sku-modal__search-field" type="text" placeholder="Search item SKU" id="mi-sku-search-input">
+          </div>
+        </div>
+        <div class="sku-modal__list" id="mi-sku-modal-list">
+          <!-- Populated by JS from modifier items table data -->
+        </div>
+        <div class="sku-modal__empty" id="mi-sku-modal-empty">No items found</div>
+      </div>
+      <div class="sku-modal__footer">
+        <button class="btn btn--secondary" id="mi-sku-modal-create-new">
+          <span class="btn__icon btn__icon--leading">
+            <i data-lucide="plus" class="lucide-icon" style="width:14px;height:14px"></i>
+          </span>
+          <span>Create new modifier item</span>
+        </button>
+        <button class="btn btn--secondary" id="mi-sku-modal-unlink" style="display:none">Unlink</button>
+        <button class="btn btn--primary" id="mi-sku-modal-continue" disabled>Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PAGE TAKEOVER: Add Modifier Item ===== -->
+  <div class="takeover" id="mi-takeover">
+    <!-- Takeover Nav -->
+    <div class="takeover__nav">
+      <div class="takeover__nav-left">
+        <button class="takeover__nav-close" id="mi-takeover-close" aria-label="Close">
+          <i data-lucide="x" class="lucide-icon" style="width:20px;height:20px"></i>
+        </button>
+        <span class="takeover__nav-title" id="mi-takeover-nav-title">Add modifier item</span>
+      </div>
+      <div class="takeover__nav-right">
+        <span class="takeover__nav-help">Save keeps your changes in draft. Publish updates your live menu across selected locations and channels.</span>
+        <button class="btn btn--secondary" id="mi-takeover-save-publish">Save and publish</button>
+        <button class="btn btn--primary" id="mi-takeover-save">Save</button>
+        <button class="btn btn--icon-only">
+          <i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Takeover Content -->
+    <div class="takeover__content takeover__content--single">
+      <!-- LEFT: Form -->
+      <div class="takeover__form">
+
+        <!-- Section: Item SKU -->
+        <div class="form-section" id="mi-form-sku-section">
+          <div class="form-section__header">
+            <h3 class="form-section__title">Item SKU <i data-lucide="info" class="lucide-icon form-section__title-hint" style="width:16px;height:16px;color:var(--color-text-weak)"></i></h3>
+          </div>
+          <!-- Empty state -->
+          <div class="sku-info-card" id="mi-sku-empty-state">
+            <div class="sku-info-card__details">
+              <div class="sku-info-card__name">No Item SKU linked. Link one or we'll create one for this item.</div>
+            </div>
+            <div class="sku-info-card__actions">
+              <button class="btn btn--secondary" id="mi-sku-link-btn">
+                <i data-lucide="link" class="lucide-icon" style="width:14px;height:14px"></i>
+                <span>Link</span>
+              </button>
+            </div>
+          </div>
+          <!-- Prefilled state (hidden by default) -->
+          <div class="sku-info-card" id="mi-sku-prefilled-state" style="display:none">
+            <div class="sku-info-card__thumb" id="mi-sku-prefilled-thumb">
+              <i data-lucide="image" class="lucide-icon sku-thumb-placeholder" id="mi-sku-prefilled-placeholder" style="width:24px;height:24px;color:var(--color-text-weak);opacity:0.4"></i>
+              <img src="" alt="" id="mi-sku-prefilled-img" style="display:none">
+            </div>
+            <div class="sku-info-card__details">
+              <div class="sku-info-card__name" id="mi-sku-prefilled-name"></div>
+              <div class="sku-info-card__meta" id="mi-sku-prefilled-meta"></div>
+            </div>
+            <div class="sku-info-card__actions">
+              <button class="btn btn--secondary" id="mi-sku-edit-btn">
+                <i data-lucide="pencil" class="lucide-icon" style="width:14px;height:14px"></i>
+                <span>Edit</span>
+              </button>
+              <button class="btn btn--icon-only" id="mi-sku-remove-btn">
+                <i data-lucide="x" class="lucide-icon" style="width:14px;height:14px"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Item Details -->
+        <div class="form-section">
+          <div class="form-section__header">
+            <h3 class="form-section__title">Item details</h3>
+          </div>
+          <div class="form-section__card">
+            <!-- Display name -->
+            <div class="form-field">
+              <div class="form-field__label-group">
+                <label class="form-field__label">Display name</label>
+                <span class="form-field__desc">Customer-facing name shown when ordering.</span>
+              </div>
+              <div class="form-field__control">
+                <input type="text" class="form-input" id="mi-field-display-name" placeholder="Enter modifier item name here">
+              </div>
+            </div>
+            <!-- Internal name -->
+            <div class="form-field">
+              <div class="form-field__label-group">
+                <label class="form-field__label">Internal name</label>
+                <span class="form-field__desc">Used for internal reference only. Not shown to customers.</span>
+              </div>
+              <div class="form-field__control">
+                <input type="text" class="form-input" id="mi-field-internal-name" placeholder="Enter a name for internal usage">
+              </div>
+            </div>
+            <!-- Description -->
+            <div class="form-field">
+              <div class="form-field__label-group">
+                <label class="form-field__label">Description</label>
+                <span class="form-field__desc">Customer-facing description to introduce the modifier item.</span>
+              </div>
+              <div class="form-field__control">
+                <textarea class="form-textarea" id="mi-field-description" placeholder="Add your description here" maxlength="200"></textarea>
+                <span class="form-char-count" id="mi-field-description-count">0 / 200 Characters Remaining</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Pricing -->
+        <div class="form-section">
+          <div class="form-section__header">
+            <h3 class="form-section__title">Pricing</h3>
+            <div class="form-section__action" id="mi-pricing-action" style="display:none">
+              <button class="btn btn--secondary">
+                <i data-lucide="pencil" class="lucide-icon" style="width:14px;height:14px"></i>
+                <span>Edit price</span>
+              </button>
+            </div>
+          </div>
+          <!-- Empty state -->
+          <div class="form-empty-card" id="mi-pricing-empty">
+            <span class="form-empty-card__text">Add a price for this modifier item.</span>
+            <button class="btn btn--secondary">
+              <i data-lucide="plus" class="lucide-icon" style="width:14px;height:14px"></i>
+              <span>Add price</span>
+            </button>
+          </div>
+          <!-- Prefilled state -->
+          <div class="category-filled-card" id="mi-pricing-prefilled" style="display:none">
+            <div class="category-filled-card__header" id="mi-pricing-amount"></div>
+            <div class="category-filled-card__list">4 locations</div>
+          </div>
+        </div>
+
+        <!-- Section: Assign to modifier group -->
+        <div class="form-section">
+          <div class="form-section__header">
+            <h3 class="form-section__title">Assign to modifier group</h3>
+            <div class="form-section__action" id="mi-mg-assign-edit-action" style="display:none">
+              <button class="btn btn--secondary" id="mi-mg-assign-edit-btn">
+                <i data-lucide="pencil" class="lucide-icon" style="width:14px;height:14px"></i>
+                <span>Edit modifier group</span>
+              </button>
+            </div>
+          </div>
+          <!-- Empty state -->
+          <div class="form-empty-card" id="mi-mg-assign-empty">
+            <span class="form-empty-card__text">Assign modifier groups to organize this item on your menu.</span>
+            <button class="btn btn--secondary" id="mi-mg-assign-btn">
+              <i data-lucide="plus" class="lucide-icon" style="width:14px;height:14px"></i>
+              <span>Assign modifier group</span>
+            </button>
+          </div>
+          <!-- Filled state -->
+          <div class="category-filled-card" id="mi-mg-assign-filled" style="display:none">
+            <div class="category-filled-card__header" id="mi-mg-assign-filled-header">Modifier groups</div>
+            <div class="category-filled-card__list" id="mi-mg-assign-filled-list"></div>
+          </div>
+        </div>
+
+        <!-- Section: Modifier groups -->
+        <div class="form-section">
+          <div class="form-section__header">
+            <h3 class="form-section__title">Modifier groups <i data-lucide="info" class="lucide-icon form-section__title-hint" style="width:16px;height:16px;color:var(--color-text-weak)"></i></h3>
+            <div class="form-section__action" id="mi-modifiers-add-action" style="display:none">
+              <button class="btn btn--secondary" id="mi-modifiers-add-more-btn">
+                <i data-lucide="plus" class="lucide-icon" style="width:14px;height:14px"></i>
+                <span>Add modifier group</span>
+              </button>
+            </div>
+          </div>
+          <!-- Empty state -->
+          <div class="form-empty-card" id="mi-modifiers-empty">
+            <span class="form-empty-card__text">Add modifier groups to let customers customize this item.</span>
+            <button class="btn btn--secondary" id="mi-modifiers-add-btn">
+              <i data-lucide="plus" class="lucide-icon" style="width:14px;height:14px"></i>
+              <span>Add modifier group</span>
+            </button>
+          </div>
+          <!-- Filled state: list of assigned modifier groups -->
+          <div class="mg-filled-list" id="mi-modifiers-filled" style="display:none"></div>
+        </div>
+
+        <!-- Section: Tax -->
+        <div class="form-section">
+          <div class="form-section__header">
+            <h3 class="form-section__title">Tax</h3>
+          </div>
+          <div class="form-empty-card">
+            <span class="form-empty-card__text">Add a tax rate for this modifier item. For channel specific tax details, go to the settings page.</span>
+            <button class="btn btn--secondary">
+              <i data-lucide="plus" class="lucide-icon" style="width:14px;height:14px"></i>
+              <span>Add tax</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Section: SKU shared details -->
+        <div class="form-section">
+          <div class="form-section__header">
+            <h3 class="form-section__title">SKU shared details <i data-lucide="info" class="lucide-icon form-section__title-hint" style="width:16px;height:16px;color:var(--color-text-weak)"></i></h3>
+          </div>
+          <div class="form-section__card">
+            <div class="form-field">
+              <div class="form-field__label-group">
+                <label class="form-field__label">SKU code</label>
+                <span class="form-field__desc">Connects this modifier item to shared product data across menus.</span>
+              </div>
+              <div class="form-field__control">
+                <input type="text" class="form-input" id="mi-field-sku-code" placeholder="Enter SKU code">
+              </div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label-group">
+                <label class="form-field__label">Alcohol</label>
+                <span class="form-field__desc">Does this product contain alcohol?</span>
+              </div>
+              <div class="form-field__control">
+                <select class="form-select" id="mi-field-alcohol">
+                  <option value="">Select alcohol type</option>
+                  <option value="beer">Beer</option>
+                  <option value="wine">Wine</option>
+                  <option value="spirits">Spirits</option>
+                  <option value="none">Non-alcohol</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Locations, station profiles, channels -->
+        <div class="form-section">
+          <div class="form-section__header">
+            <h3 class="form-section__title">Locations, station profiles, channels</h3>
+            <div class="form-section__action">
+              <button class="btn btn--secondary">
+                <i data-lucide="external-link" class="lucide-icon" style="width:14px;height:14px"></i>
+                <span>Edit station profile</span>
+              </button>
+            </div>
+          </div>
+          <div class="form-section__card">
+            <div class="form-field">
+              <div class="form-field__label-group">
+                <label class="form-field__label">Locations</label>
+              </div>
+              <div class="form-field__control">
+                <div class="multiselect" data-field="locations">
+                  <div class="multiselect__trigger">
+                    <div class="multiselect__pills">
+                      <span class="multiselect__placeholder">Select</span>
+                    </div>
+                    <i data-lucide="chevron-down" class="lucide-icon multiselect__chevron" style="width:16px;height:16px;color:var(--color-text-weak)"></i>
+                  </div>
+                  <div class="multiselect__dropdown">
+                    <div class="multiselect__search-wrap">
+                      <i data-lucide="search" class="lucide-icon" style="width:14px;height:14px;color:var(--color-text-weak)"></i>
+                      <input type="text" class="multiselect__search" placeholder="Search...">
+                    </div>
+                    <div class="multiselect__option multiselect__option--select-all" data-value="__all__">
+                      <input type="checkbox" class="multiselect__checkbox">
+                      <span>Select all</span>
+                    </div>
+                    <div class="multiselect__divider"></div>
+                    <div class="multiselect__options">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label-group">
+                <label class="form-field__label">Station profiles</label>
+              </div>
+              <div class="form-field__control">
+                <div class="multiselect" data-field="stations">
+                  <div class="multiselect__trigger">
+                    <div class="multiselect__pills">
+                      <span class="multiselect__placeholder">Select</span>
+                    </div>
+                    <i data-lucide="chevron-down" class="lucide-icon multiselect__chevron" style="width:16px;height:16px;color:var(--color-text-weak)"></i>
+                  </div>
+                  <div class="multiselect__dropdown">
+                    <div class="multiselect__search-wrap">
+                      <i data-lucide="search" class="lucide-icon" style="width:14px;height:14px;color:var(--color-text-weak)"></i>
+                      <input type="text" class="multiselect__search" placeholder="Search...">
+                    </div>
+                    <div class="multiselect__option multiselect__option--select-all" data-value="__all__">
+                      <input type="checkbox" class="multiselect__checkbox">
+                      <span>Select all</span>
+                    </div>
+                    <div class="multiselect__divider"></div>
+                    <div class="multiselect__options">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label-group">
+                <label class="form-field__label">Channels</label>
+              </div>
+              <div class="form-field__control">
+                <div class="multiselect" data-field="channels">
+                  <div class="multiselect__trigger">
+                    <div class="multiselect__pills">
+                      <span class="multiselect__placeholder">Select</span>
+                    </div>
+                    <i data-lucide="chevron-down" class="lucide-icon multiselect__chevron" style="width:16px;height:16px;color:var(--color-text-weak)"></i>
+                  </div>
+                  <div class="multiselect__dropdown">
+                    <div class="multiselect__search-wrap">
+                      <i data-lucide="search" class="lucide-icon" style="width:14px;height:14px;color:var(--color-text-weak)"></i>
+                      <input type="text" class="multiselect__search" placeholder="Search...">
+                    </div>
+                    <div class="multiselect__option multiselect__option--select-all" data-value="__all__">
+                      <input type="checkbox" class="multiselect__checkbox">
+                      <span>Select all</span>
+                    </div>
+                    <div class="multiselect__divider"></div>
+                    <div class="multiselect__options">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== PAGE TAKEOVER: Add/Edit Category ===== -->
+  <div class="takeover" id="cat-takeover">
+    <!-- Takeover Nav -->
+    <div class="takeover__nav">
+      <div class="takeover__nav-left">
+        <button class="takeover__nav-close" id="cat-takeover-close" aria-label="Close">
+          <i data-lucide="x" class="lucide-icon" style="width:20px;height:20px"></i>
+        </button>
+        <span class="takeover__nav-title" id="cat-takeover-nav-title">Add category</span>
+      </div>
+      <div class="takeover__nav-right">
+        <span class="takeover__nav-help">Save keeps your changes in draft. Publish updates your live menu across selected locations and channels.</span>
+        <button class="btn btn--secondary" id="cat-takeover-save-publish">Save and publish</button>
+        <button class="btn btn--primary" id="cat-takeover-save">Save</button>
+        <button class="btn btn--icon-only">
+          <i data-lucide="ellipsis-vertical" class="lucide-icon" style="width:16px;height:16px"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Takeover Content -->
+    <div class="takeover__content takeover__content--single">
+      <div class="takeover__form">
+
+        <!-- Section: Category details -->
+        <div class="form-section">
+          <div class="form-section__header">
+            <h3 class="form-section__title">Category details</h3>
+          </div>
+          <div class="form-section__card">
+            <!-- Display name -->
+            <div class="form-field">
+              <div class="form-field__label-group">
+                <label class="form-field__label">Display name</label>
+                <span class="form-field__desc">Customer-facing name shown when ordering. Example: &ldquo;Today&rsquo;s special&rdquo;</span>
+              </div>
+              <div class="form-field__control">
+                <input type="text" class="form-input" id="cat-field-display-name" placeholder="Enter category name here">
+              </div>
+            </div>
+            <!-- Internal name -->
+            <div class="form-field">
+              <div class="form-field__label-group">
+                <label class="form-field__label">Internal name</label>
+                <span class="form-field__desc">Used for internal reference only. Not shown to customers.</span>
+              </div>
+              <div class="form-field__control">
+                <input type="text" class="form-input" id="cat-field-internal-name" placeholder="Enter a name for internal usage">
+              </div>
+            </div>
+            <!-- Description -->
+            <div class="form-field">
+              <div class="form-field__label-group">
+                <label class="form-field__label">Description</label>
+                <span class="form-field__desc">Add a description to help manage and organize this category internally.</span>
+              </div>
+              <div class="form-field__control">
+                <textarea class="form-textarea" id="cat-field-description" placeholder="Add your description here" maxlength="200"></textarea>
+                <span class="form-char-count" id="cat-field-description-count">0 / 200 Characters Remaining</span>
+              </div>
+            </div>
+            <!-- Featured category toggle -->
+            <div class="form-field">
+              <div class="form-field__label-group">
+                <label class="form-field__label">Featured category</label>
+                <span class="form-field__desc">Featured category applies to Otter POS only</span>
+              </div>
+              <div class="form-field__control form-field__control--toggle">
+                <span class="toggle-label" id="cat-featured-label">Off</span>
+                <label class="toggle-switch">
+                  <input type="checkbox" id="cat-field-featured">
+                  <span class="toggle-switch__slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Menu items -->
+        <div class="form-section">
+          <div class="form-section__header">
+            <h3 class="form-section__title">Menu items</h3>
+            <div class="form-section__action" id="cat-menu-items-add-action" style="display:none">
+              <button class="btn btn--secondary" id="cat-menu-items-add-more-btn">
+                <i data-lucide="pencil" class="lucide-icon" style="width:14px;height:14px"></i>
+                <span>Edit menu items</span>
+              </button>
+            </div>
+          </div>
+          <!-- Empty state -->
+          <div class="form-empty-card" id="cat-menu-items-empty">
+            <span class="form-empty-card__text">Select items that will belong to this category.</span>
+            <button class="btn btn--secondary" id="cat-menu-items-add-btn">
+              <i data-lucide="plus" class="lucide-icon" style="width:14px;height:14px"></i>
+              <span>Add menu item</span>
+            </button>
+          </div>
+          <!-- Filled state -->
+          <div class="category-filled-card" id="cat-menu-items-filled" style="display:none">
+            <div class="category-filled-card__header" id="cat-menu-items-filled-header"></div>
+            <div class="category-filled-card__list" id="cat-menu-items-filled-list"></div>
+          </div>
+        </div>
+
+        <!-- Section: Assign to menus -->
+        <div class="form-section">
+          <div class="form-section__header">
+            <h3 class="form-section__title">Assign to menus</h3>
+          </div>
+          <div class="form-section__card">
+            <div class="form-field">
+              <div class="form-field__label-group">
+                <label class="form-field__label">Menus</label>
+                <span class="form-field__desc">Assign this category to menus to make it available for ordering.</span>
+              </div>
+              <div class="form-field__control">
+                <div class="multiselect" data-field="cat-menus">
+                  <div class="multiselect__trigger">
+                    <div class="multiselect__pills">
+                      <span class="multiselect__placeholder">Select menus</span>
+                    </div>
+                    <i data-lucide="chevron-down" class="lucide-icon multiselect__chevron" style="width:16px;height:16px;color:var(--color-text-weak)"></i>
+                  </div>
+                  <div class="multiselect__dropdown">
+                    <div class="multiselect__search-wrap">
+                      <i data-lucide="search" class="lucide-icon" style="width:14px;height:14px;color:var(--color-text-weak)"></i>
+                      <input type="text" class="multiselect__search" placeholder="Search...">
+                    </div>
+                    <div class="multiselect__option multiselect__option--select-all" data-value="__all__">
+                      <input type="checkbox" class="multiselect__checkbox">
+                      <span>Select all</span>
+                    </div>
+                    <div class="multiselect__divider"></div>
+                    <div class="multiselect__options">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Locations, channels -->
+        <div class="form-section">
+          <div class="form-section__header">
+            <h3 class="form-section__title">Locations, channels</h3>
+          </div>
+          <div class="form-section__card">
+            <div class="form-field">
+              <div class="form-field__label-group">
+                <label class="form-field__label">Locations</label>
+              </div>
+              <div class="form-field__control">
+                <div class="multiselect" data-field="cat-locations">
+                  <div class="multiselect__trigger">
+                    <div class="multiselect__pills">
+                      <span class="multiselect__placeholder">Select</span>
+                    </div>
+                    <i data-lucide="chevron-down" class="lucide-icon multiselect__chevron" style="width:16px;height:16px;color:var(--color-text-weak)"></i>
+                  </div>
+                  <div class="multiselect__dropdown">
+                    <div class="multiselect__search-wrap">
+                      <i data-lucide="search" class="lucide-icon" style="width:14px;height:14px;color:var(--color-text-weak)"></i>
+                      <input type="text" class="multiselect__search" placeholder="Search...">
+                    </div>
+                    <div class="multiselect__option multiselect__option--select-all" data-value="__all__">
+                      <input type="checkbox" class="multiselect__checkbox">
+                      <span>Select all</span>
+                    </div>
+                    <div class="multiselect__divider"></div>
+                    <div class="multiselect__options">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label-group">
+                <label class="form-field__label">Channels</label>
+              </div>
+              <div class="form-field__control">
+                <div class="multiselect" data-field="cat-channels">
+                  <div class="multiselect__trigger">
+                    <div class="multiselect__pills">
+                      <span class="multiselect__placeholder">Select</span>
+                    </div>
+                    <i data-lucide="chevron-down" class="lucide-icon multiselect__chevron" style="width:16px;height:16px;color:var(--color-text-weak)"></i>
+                  </div>
+                  <div class="multiselect__dropdown">
+                    <div class="multiselect__search-wrap">
+                      <i data-lucide="search" class="lucide-icon" style="width:14px;height:14px;color:var(--color-text-weak)"></i>
+                      <input type="text" class="multiselect__search" placeholder="Search...">
+                    </div>
+                    <div class="multiselect__option multiselect__option--select-all" data-value="__all__">
+                      <input type="checkbox" class="multiselect__checkbox">
+                      <span>Select all</span>
+                    </div>
+                    <div class="multiselect__divider"></div>
+                    <div class="multiselect__options">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== ADD MENU ITEMS MODAL (for Category takeover) ===== -->
+  <div class="cat-modal-overlay" id="cat-mi-modal-overlay">
+    <div class="cat-modal">
+      <div class="cat-modal__header">
+        <h2 class="cat-modal__title" id="cat-mi-modal-title">Add menu items</h2>
+        <button class="cat-modal__close" id="cat-mi-modal-close">
+          <i data-lucide="x" class="lucide-icon" style="width:20px;height:20px"></i>
+        </button>
+      </div>
+      <div class="cat-modal__body">
+        <div class="cat-modal__search">
+          <div class="cat-modal__search-input">
+            <i data-lucide="search" class="lucide-icon cat-modal__search-icon" style="width:16px;height:16px"></i>
+            <input type="text" class="cat-modal__search-field" id="cat-mi-search-input" placeholder="Search menu items">
+          </div>
+        </div>
+        <!-- Select all -->
+        <div class="cat-modal__select-all">
+          <div class="cat-modal__option" data-value="__all__">
+            <input type="checkbox" class="cat-modal__checkbox" data-value="__all__">
+            <div class="cat-modal__option-info">
+              <span class="cat-modal__option-name cat-modal__option-name--bold">Select / deselect all</span>
+            </div>
+          </div>
+        </div>
+        <div class="cat-modal__divider"></div>
+        <!-- Menu items list -->
+        <div class="cat-modal__list" id="cat-mi-modal-list"></div>
+        <div class="cat-modal__empty" id="cat-mi-modal-empty">No menu items found</div>
+      </div>
+      <div class="cat-modal__footer">
+        <button class="btn btn--secondary" id="cat-mi-modal-cancel">Cancel</button>
+        <button class="btn btn--primary" id="cat-mi-modal-confirm">Confirm</button>
+      </div>
+    </div>
+  </div>
+
   <!-- JavaScript -->
   <script src="js/sidebar.js?v=2"></script>
   <script src="js/tabs.js?v=2"></script>
@@ -3015,12 +3808,14 @@
   <script src="js/row-actions.js"></script>
   <script src="js/sort.js"></script>
   <script src="js/sticky-header.js?v=2"></script>
-  <script src="js/tooltips.js?v=5"></script>
+  <script src="js/tooltips.js?v=7"></script>
   <script src="js/mg-table.js"></script>
   <script src="js/menus-table.js"></script>
-  <script src="js/mi-table.js"></script>
-  <script src="js/add-item.js?v=18"></script>
-  <script src="js/multiselect.js"></script>
+  <script src="js/mi-table.js?v=2"></script>
+  <script src="js/add-item.js?v=22"></script>
+  <script src="js/add-modifier-item.js?v=10"></script>
+  <script src="js/add-category.js?v=5"></script>
+  <script src="js/multiselect.js?v=4"></script>
   <script>
     // Initialize Lucide icons
     lucide.createIcons();

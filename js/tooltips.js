@@ -7,161 +7,161 @@ document.addEventListener('DOMContentLoaded', () => {
     'Coke Can': {
       category: ['Drinks'],
       modifiers: [],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Drink Station'],
       channels: ['Doordash', 'UberEats']
     },
     'Sprite Can': {
       category: ['Drinks'],
       modifiers: [],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Drink Station'],
       channels: ['Doordash', 'Grubhub']
     },
     'Kool-Aid': {
       category: ['Drinks'],
       modifiers: [],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Drink Station'],
       channels: ['UberEats', 'Otter POS']
     },
     'Cakes': {
       category: ['Desserts'],
       modifiers: ['Choice of Cake'],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Fried Station'],
       channels: ['Doordash', 'UberEats', 'Grubhub']
     },
     'Salsa': {
       category: ['Sides'],
       modifiers: [],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Grill Station'],
       channels: ['Doordash', 'Otter POS']
     },
     'Toast (Two)': {
       category: ['Sides'],
       modifiers: [],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Grill Station'],
       channels: ['UberEats', 'Otter Direct Orders']
     },
     'Hash Brown': {
       category: ['Sides'],
       modifiers: [],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Fried Station'],
       channels: ['Doordash', 'UberEats', 'Otter POS']
     },
     'Bacon (Two)': {
       category: ['Sides'],
       modifiers: [],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Grill Station'],
       channels: ['Grubhub', 'Otter POS']
     },
     'Sausage': {
       category: ['Sides'],
       modifiers: [],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Grill Station'],
       channels: ['Doordash', 'UberEats']
     },
     'Pancake': {
       category: ['Sides'],
       modifiers: [],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Grill Station'],
       channels: ['Doordash', 'UberEats', 'Grubhub']
     },
     'Waffle': {
       category: ['Sides'],
       modifiers: [],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Grill Station'],
       channels: ['UberEats', 'Grubhub', 'Otter POS']
     },
     'French Toast': {
       category: ['Sides'],
       modifiers: [],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Grill Station'],
       channels: ['Doordash', 'Otter Direct Orders']
     },
     'Waffle Breakfast Plate': {
       category: ['Breakfast plate'],
       modifiers: ['Egg Style', 'Plate Add Ons'],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Grill Station', 'Fried Station'],
       channels: ['Doordash', 'UberEats', 'Grubhub', 'Otter POS']
     },
     'Chicken and Waffles Plate': {
       category: ['Breakfast plate'],
       modifiers: ['Egg Style', 'Plate Add Ons'],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Grill Station', 'Fried Station'],
       channels: ['Doordash', 'UberEats', 'Otter Direct Orders']
     },
     'Pancake Breakfast Plate': {
       category: ['Breakfast plate'],
       modifiers: ['Egg Style', 'Plate Add Ons'],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Grill Station', 'Fried Station'],
       channels: ['UberEats', 'Grubhub', 'Otter POS']
     },
     'Big Breakfast Plate': {
       category: ['Breakfast plate'],
       modifiers: ['Egg Style', 'Plate Add Ons'],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Grill Station', 'Fried Station'],
       channels: ['Doordash', 'UberEats', 'Grubhub', 'Otter POS', 'Otter Direct Orders']
     },
     'French Toast Plate': {
       category: ['Breakfast plate'],
       modifiers: ['Egg Style', 'Plate Add Ons'],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Grill Station', 'Fried Station'],
       channels: ['Doordash', 'Grubhub']
     },
     'Eggy Taco': {
       category: ['Breakfast tacos'],
       modifiers: ['Choice of American Cheese', 'Choice of Add Ons'],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Grill Station'],
       channels: ['Doordash', 'UberEats', 'Otter POS']
     },
     'Hammy Eggy Taco': {
       category: ['Breakfast tacos'],
       modifiers: ['Choice of American Cheese', 'Choice of Add Ons'],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Grill Station'],
       channels: ['Doordash', 'Grubhub', 'Otter Direct Orders']
     },
     'Porky Eggy Taco': {
       category: ['Breakfast tacos'],
       modifiers: ['Choice of American Cheese', 'Choice of Add Ons'],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Grill Station'],
       channels: ['UberEats', 'Grubhub']
     },
     'Eggy Sausage Taco': {
       category: ['Breakfast tacos'],
       modifiers: ['Choice of American Cheese', 'Choice of Add Ons'],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Grill Station'],
       channels: ['Doordash', 'UberEats', 'Otter POS']
     },
     'Veggie Eggy Taco': {
       category: ['Breakfast tacos'],
       modifiers: ['Choice of American Cheese', 'Choice of Add Ons'],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Grill Station'],
       channels: ['Grubhub', 'Otter Direct Orders']
     },
     'Biggy Eggy Taco': {
       category: ['Breakfast tacos'],
       modifiers: ['Choice of American Cheese', 'Choice of Add Ons'],
-      location: "PT's Fried Chicken and Fish - dallas o",
+      location: "PT's Fried Chicken and Fish - Dallas O",
       stations: ['Grill Station'],
       channels: ['Doordash', 'UberEats', 'Grubhub']
     }
@@ -172,31 +172,31 @@ document.addEventListener('DOMContentLoaded', () => {
     'Choice of Cake': {
       items: ['Banana Pudding Chess', 'Oreo', 'Lemon'],
       usedBy: ['Cakes'],
-      locations: ["PT's Fried Chicken and Fish - dallas o"],
+      locations: ["PT's Fried Chicken and Fish - Dallas O"],
       channels: ['Doordash', 'UberEats']
     },
     'Egg Style': {
       items: ['Scrambled Eggs', 'Over Hard'],
       usedBy: ['Waffle Breakfast Plate', 'Chicken and Waffles Plate', 'Pancake Breakfast Plate', 'Big Breakfast Plate', 'French Toast Plate'],
-      locations: ["PT's Fried Chicken and Fish - dallas o"],
+      locations: ["PT's Fried Chicken and Fish - Dallas O"],
       channels: ['Doordash', 'UberEats']
     },
     'Plate Add Ons': {
       items: ['Extra Syrup', 'Extra Butter', 'White American Cheese', 'Yellow American Cheese', 'Hash Brown', 'Extra Toast', 'Extra Egg', 'Bacon Two', 'Ham', 'Sausage', 'Extra Pancake', 'Extra Waffle'],
       usedBy: ['Waffle Breakfast Plate', 'Chicken and Waffles Plate', 'Pancake Breakfast Plate', 'Big Breakfast Plate', 'French Toast Plate'],
-      locations: ["PT's Fried Chicken and Fish - dallas o"],
+      locations: ["PT's Fried Chicken and Fish - Dallas O"],
       channels: ['Doordash', 'UberEats']
     },
     'Choice of American Cheese': {
       items: ['White Cheese', 'Yellow Cheese'],
       usedBy: ['Eggy Taco', 'Hammy Eggy Taco', 'Porky Eggy Taco', 'Eggy Sausage Taco', 'Veggie Eggy Taco', 'Biggy Eggy Taco'],
-      locations: ["PT's Fried Chicken and Fish - dallas o"],
+      locations: ["PT's Fried Chicken and Fish - Dallas O"],
       channels: ['Doordash', 'UberEats']
     },
     'Choice of Add Ons': {
       items: ['Onions', 'White American Cheese', 'Yellow American Cheese', 'Hash Brown', 'Extra Egg', 'Bacon Two', 'Ham', 'Sausage'],
       usedBy: ['Eggy Taco', 'Hammy Eggy Taco', 'Porky Eggy Taco', 'Eggy Sausage Taco', 'Veggie Eggy Taco', 'Biggy Eggy Taco'],
-      locations: ["PT's Fried Chicken and Fish - dallas o"],
+      locations: ["PT's Fried Chicken and Fish - Dallas O"],
       channels: ['Doordash', 'UberEats']
     }
   };
@@ -299,13 +299,13 @@ document.addEventListener('DOMContentLoaded', () => {
     'All Day Menu': {
       categories: ['Drinks', 'Desserts', 'Sides', 'Breakfast plate', 'Breakfast tacos'],
       items: Object.keys(itemData),
-      locations: ["PT's Fried Chicken and Fish - dallas o"],
+      locations: ["PT's Fried Chicken and Fish - Dallas O"],
       channels: ['Doordash', 'UberEats']
     },
     'Drink Menu': {
       categories: ['Drinks'],
       items: ['Coke Can', 'Sprite Can', 'Kool-Aid'],
-      locations: ["PT's Fried Chicken and Fish - dallas o"],
+      locations: ["PT's Fried Chicken and Fish - Dallas O"],
       channels: ['Doordash', 'UberEats']
     }
   };
@@ -343,34 +343,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const miData = {
-    'Banana Pudding Chess': { usedIn: miUsedInMap['Banana Pudding Chess'] || [], contains: [], stations: ['Fried Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'Oreo':                 { usedIn: miUsedInMap['Oreo'] || [], contains: [], stations: ['Fried Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'Lemon':                { usedIn: miUsedInMap['Lemon'] || [], contains: [], stations: ['Fried Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'Scrambled Eggs':       { usedIn: miUsedInMap['Scrambled Eggs'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'Over Hard':            { usedIn: miUsedInMap['Over Hard'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'Extra Syrup':          { usedIn: miUsedInMap['Extra Syrup'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'Extra Butter':         { usedIn: miUsedInMap['Extra Butter'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'White American Cheese':{ usedIn: miUsedInMap['White American Cheese'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'Yellow American Cheese':{ usedIn: miUsedInMap['Yellow American Cheese'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'Hash Brown':           { usedIn: miUsedInMap['Hash Brown'] || [], contains: [], stations: ['Fried Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'Extra Toast':          { usedIn: miUsedInMap['Extra Toast'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'Extra Egg':            { usedIn: miUsedInMap['Extra Egg'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'Bacon Two':            { usedIn: miUsedInMap['Bacon Two'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'Ham':                  { usedIn: miUsedInMap['Ham'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'Sausage':              { usedIn: miUsedInMap['Sausage'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'Extra Pancake':        { usedIn: miUsedInMap['Extra Pancake'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'Extra Waffle':         { usedIn: miUsedInMap['Extra Waffle'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'White Cheese':         { usedIn: miUsedInMap['White Cheese'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'Yellow Cheese':        { usedIn: miUsedInMap['Yellow Cheese'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] },
-    'Onions':               { usedIn: miUsedInMap['Onions'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - dallas o"], channels: ['Doordash', 'UberEats'] }
+  const miData = window._tooltipMiData = {
+    'Banana Pudding Chess': { usedIn: miUsedInMap['Banana Pudding Chess'] || [], contains: [], stations: ['Fried Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'Oreo':                 { usedIn: miUsedInMap['Oreo'] || [], contains: [], stations: ['Fried Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'Lemon':                { usedIn: miUsedInMap['Lemon'] || [], contains: [], stations: ['Fried Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'Scrambled Eggs':       { usedIn: miUsedInMap['Scrambled Eggs'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'Over Hard':            { usedIn: miUsedInMap['Over Hard'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'Extra Syrup':          { usedIn: miUsedInMap['Extra Syrup'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'Extra Butter':         { usedIn: miUsedInMap['Extra Butter'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'White American Cheese':{ usedIn: miUsedInMap['White American Cheese'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'Yellow American Cheese':{ usedIn: miUsedInMap['Yellow American Cheese'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'Hash Brown':           { usedIn: miUsedInMap['Hash Brown'] || [], contains: [], stations: ['Fried Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'Extra Toast':          { usedIn: miUsedInMap['Extra Toast'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'Extra Egg':            { usedIn: miUsedInMap['Extra Egg'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'Bacon Two':            { usedIn: miUsedInMap['Bacon Two'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'Ham':                  { usedIn: miUsedInMap['Ham'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'Sausage':              { usedIn: miUsedInMap['Sausage'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'Extra Pancake':        { usedIn: miUsedInMap['Extra Pancake'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'Extra Waffle':         { usedIn: miUsedInMap['Extra Waffle'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'White Cheese':         { usedIn: miUsedInMap['White Cheese'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'Yellow Cheese':        { usedIn: miUsedInMap['Yellow Cheese'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] },
+    'Onions':               { usedIn: miUsedInMap['Onions'] || [], contains: [], stations: ['Grill Station'], locations: ["PT's Fried Chicken and Fish - Dallas O"], channels: ['Doordash', 'UberEats'] }
   };
 
-  const MI_COL_USED_IN = 4;
-  const MI_COL_CONTAINS = 5;
-  const MI_COL_STATIONS = 6;
-  const MI_COL_LOCATIONS = 7;
-  const MI_COL_CHANNELS = 8;
+  const MI_COL_USED_IN = 5;
+  const MI_COL_CONTAINS = 6;
+  const MI_COL_STATIONS = 7;
+  const MI_COL_LOCATIONS = 8;
+  const MI_COL_CHANNELS = 9;
 
   const miTbody = document.querySelector('#mi-data-table tbody');
   if (miTbody) {

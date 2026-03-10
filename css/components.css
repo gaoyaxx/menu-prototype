@@ -725,6 +725,40 @@
   letter-spacing: -0.0126px;
 }
 
+/* Modifier items table: menu item used as modifier item */
+.cell-mi-display-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.data-table td .cell-menu-item-link {
+  font-weight: var(--fw-medium);
+  font-size: var(--text-body-small);
+  line-height: var(--lh-body-small);
+  color: var(--color-primary);
+  cursor: pointer;
+  text-decoration: underline;
+  letter-spacing: -0.0126px;
+}
+
+.data-table td .cell-menu-item-link:hover {
+  text-decoration: none;
+}
+
+.cell-menu-item-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 900px;
+  background: var(--color-bg-weak, #F0F0F0);
+  font-size: var(--text-caption);
+  line-height: var(--lh-caption);
+  color: var(--color-text-standard);
+  white-space: nowrap;
+}
+
 .cell-sku-link {
   color: var(--color-primary);
   font-size: var(--text-body-small);
@@ -832,6 +866,7 @@
 .col-mi-display-name { min-width: 190px; }
 .col-mi-internal-name { min-width: 150px; }
 .col-mi-sku { min-width: 160px; }
+.col-mi-price { min-width: 80px; }
 .col-mi-used-in { min-width: 120px; }
 .col-mi-contains { min-width: 120px; }
 .col-mi-stations { min-width: 110px; }

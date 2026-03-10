@@ -116,6 +116,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Open SKU Modal ──
   function openSkuModal(mode) {
+    // Guard: only open for menu-items tab (not modifier-items or others)
+    const activeTab = document.querySelector('.pill-tab--selected');
+    if (activeTab && activeTab.getAttribute('data-tab') !== 'menu-items') return;
+
     modalMode = mode || 'add';
     tableItems = scrapeTableItems();
     buildModalList(tableItems);
@@ -377,10 +381,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ── Wire up the "+ Add menu item" button ──
-  // The button is in .section-header__actions
+  // The button is in .section-header__actions — only fire on the menu-items tab
   const addBtn = document.querySelector('.section-header__actions .btn');
   if (addBtn) {
     addBtn.addEventListener('click', (e) => {
+      const activeTab = document.querySelector('.pill-tab--selected');
+      if (activeTab && activeTab.getAttribute('data-tab') !== 'menu-items') return;
       e.preventDefault();
       openSkuModal('add');
     });
@@ -441,6 +447,86 @@ document.addEventListener('DOMContentLoaded', () => {
       if (document.getElementById('modifiers-add-action')) document.getElementById('modifiers-add-action').style.display = '';
       renderModifierGroupCards();
       renderPreviewModifiers();
+    }
+
+    // Pre-fill locations, station profiles, channels from tooltip data
+    if (window.multiselectSetValues && window._tooltipItemData) {
+      var tipData = window._tooltipItemData[item.name];
+      if (tipData) {
+        var locs = tipData.location ? [tipData.location] : [];
+        window.multiselectSetValues('locations', locs, takeover);
+        window.multiselectSetValues('stations', tipData.stations || [], takeover);
+        window.multiselectSetValues('channels', tipData.channels || [], takeover);
+      }
+    }
+  });
+
+  // ── Menu item link click in modifier items table → Edit as menu item ──
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('.cell-menu-item-link');
+    if (!link) return;
+    var menuItemName = link.dataset.menuItem || link.textContent.trim();
+
+    // Find this item in the main menu items table
+    var mainTable = document.querySelector('.data-table:not(#mi-data-table)');
+    if (!mainTable) return;
+    var rows = mainTable.querySelectorAll('tbody tr');
+    var itemData = null;
+    rows.forEach(function(row) {
+      var nameEl = row.querySelector('.cell-name-text');
+      if (nameEl && nameEl.textContent.trim() === menuItemName) {
+        var cells = row.querySelectorAll('td');
+        var thumbEl = row.querySelector('.cell-thumbnail img');
+        var skuLinkEl = row.querySelector('.cell-sku-link');
+        var skuIdEl = row.querySelector('.cell-sku-id');
+        itemData = {
+          name: menuItemName,
+          thumb: thumbEl ? thumbEl.src : '',
+          skuLink: skuLinkEl ? skuLinkEl.textContent.trim() : '',
+          skuId: skuIdEl ? skuIdEl.textContent.trim() : '',
+          price: cells[4] ? cells[4].textContent.trim() : '',
+          internalName: cells[2] ? cells[2].textContent.trim() : '',
+          description: '',
+          usedIn: cells[5] ? cells[5].textContent.trim() : '',
+          contains: cells[6] ? cells[6].textContent.trim() : ''
+        };
+      }
+    });
+
+    if (itemData) {
+      if (takeoverNavTitle) takeoverNavTitle.textContent = 'Edit menu item';
+      openTakeover(itemData);
+
+      // Pre-fill categories
+      var usedInMatch = itemData.usedIn.match(/(\d+)/);
+      var catCount = usedInMatch ? parseInt(usedInMatch[1]) : 0;
+      if (catCount > 0) {
+        selectedCategories = CATEGORIES.slice(0, catCount).map(function(c) { return c.name; });
+        applyCategorySelection();
+      }
+
+      // Pre-fill modifier groups
+      var containsMatch = itemData.contains.match(/(\d+)/);
+      var mgCount = containsMatch ? parseInt(containsMatch[1]) : 0;
+      if (mgCount > 0) {
+        selectedModifierGroups = MODIFIER_GROUPS.slice(0, mgCount).map(function(g) { return g.name; });
+        modifiersEmpty.style.display = 'none';
+        modifiersPrefilled.style.display = '';
+        if (document.getElementById('modifiers-add-action')) document.getElementById('modifiers-add-action').style.display = '';
+        renderModifierGroupCards();
+        renderPreviewModifiers();
+      }
+
+      // Pre-fill locations, station profiles, channels from tooltip data
+      if (window.multiselectSetValues && window._tooltipItemData) {
+        var tipData = window._tooltipItemData[menuItemName];
+        if (tipData) {
+          var locs = tipData.location ? [tipData.location] : [];
+          window.multiselectSetValues('locations', locs, takeover);
+          window.multiselectSetValues('stations', tipData.stations || [], takeover);
+          window.multiselectSetValues('channels', tipData.channels || [], takeover);
+        }
+      }
     }
   });
 

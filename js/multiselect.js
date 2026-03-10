@@ -20,6 +20,23 @@
       'Grubhub',
       'Otter POS',
       'Otter Direct Orders'
+    ],
+    'cat-menus': [
+      'All Day Menu',
+      'Drink Menu'
+    ],
+    'cat-locations': [
+      'USA - TX - Dallas - Trinity Groves - 921 W Commerce St',
+      'USA - TX - Fort Worth - Downtown - 3004 Cullen St',
+      "PT's Fried Chicken and Fish - Dallas O",
+      "PT's Fried Chicken and Fish - Dallas"
+    ],
+    'cat-channels': [
+      'Doordash',
+      'UberEats',
+      'Grubhub',
+      'Otter POS',
+      'Otter Direct Orders'
     ]
   };
 
@@ -308,6 +325,28 @@
       lucide.createIcons();
     }
   }
+
+  /** Programmatically set selected values on a multiselect.
+   *  Optional scopeEl limits the search to a specific container. */
+  window.multiselectSetValues = function(dataField, values, scopeEl) {
+    var root = scopeEl || document;
+    var ms = root.querySelector('.multiselect[data-field="' + dataField + '"]');
+    if (!ms) return;
+    // Uncheck all first
+    ms.querySelectorAll('.multiselect__options .multiselect__checkbox').forEach(function(cb) {
+      cb.checked = false;
+    });
+    // Check matching values
+    values.forEach(function(val) {
+      var opts = ms.querySelectorAll('.multiselect__options .multiselect__option');
+      opts.forEach(function(opt) {
+        if (opt.getAttribute('data-value') === val) {
+          opt.querySelector('.multiselect__checkbox').checked = true;
+        }
+      });
+    });
+    refreshPills(ms);
+  };
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);

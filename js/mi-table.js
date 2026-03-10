@@ -3,9 +3,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const table = document.getElementById('mi-data-table');
   if (!table) return;
 
-  // ── Select-all checkbox sync ──
+  // ── Select-all checkbox sync + bulk actions ──
   const selectAll = document.getElementById('mi-select-all');
   const rowCheckboxes = () => table.querySelectorAll('tbody .mi-table-checkbox');
+  const bulkBar = document.getElementById('mi-bulk-action-bar');
+  const bulkCount = document.getElementById('mi-bulk-action-count');
+  const bulkDismiss = document.getElementById('mi-bulk-action-dismiss');
+
+  function updateBulkActionBar() {
+    const checkedCount = Array.from(rowCheckboxes()).filter(c => c.checked).length;
+    if (bulkBar) bulkBar.style.display = checkedCount > 0 ? 'flex' : 'none';
+    if (bulkCount) bulkCount.textContent = checkedCount + ' selected';
+  }
+
+  function clearAllSelections() {
+    if (selectAll) {
+      selectAll.checked = false;
+      selectAll.indeterminate = false;
+    }
+    rowCheckboxes().forEach(cb => {
+      cb.checked = false;
+      const tr = cb.closest('tr');
+      if (tr) tr.classList.remove('table-row--selected');
+    });
+    updateBulkActionBar();
+  }
 
   if (selectAll) {
     selectAll.addEventListener('change', () => {
@@ -14,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const tr = cb.closest('tr');
         if (tr) tr.classList.toggle('table-row--selected', cb.checked);
       });
+      updateBulkActionBar();
     });
 
     table.querySelector('tbody').addEventListener('change', (e) => {
@@ -26,7 +49,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const someChecked = Array.from(cbs).some(c => c.checked);
       selectAll.checked = allChecked;
       selectAll.indeterminate = someChecked && !allChecked;
+      updateBulkActionBar();
     });
+  }
+
+  if (bulkDismiss) {
+    bulkDismiss.addEventListener('click', () => clearAllSelections());
   }
 
   // ── Column toggle ──
